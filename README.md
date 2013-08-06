@@ -7,4 +7,4 @@ Currently using the [MIT license](LICENSE) for the project.
 
 * * *
 
-Produced by @f3ndot for the [#bikeTO](https://www.twitter.com/search?q=%23BikeTO) community.
+Produced by [@f3ndot](http://www.justinbull.ca) for the [#bikeTO](https://www.twitter.com/search?q=%23BikeTO) community.
