@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @incident.description
+%p
+  %b Datetime of incident:
+  = @incident.datetime_of_incident
+%p
+  %b Location:
+  = @incident.location
+%p
+  %b Injured:
+  = @incident.injured
+%p
+  %b Police report number:
+  = @incident.police_report_number
+%p
+  %b Video:
+  = @incident.video
+
+= link_to 'Edit', edit_incident_path(@incident)
+\|
+= link_to 'Back', incidents_path
