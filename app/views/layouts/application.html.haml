@@ -7,5 +7,8 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
+    = nav_bar static: :top, brand: 'Doored!' do
+      - menu_group do
+        = menu_item "Home", root_path
     .container
       = yield
