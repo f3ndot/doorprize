@@ -1,6 +1,8 @@
 doorprize
 =========
 
+[![Build Status](https://travis-ci.org/f3ndot/doorprize.png)](https://travis-ci.org/f3ndot/doorprize)
+
 A Rails site where cyclists who were "doored" can report their incident for statistics in Canada
 
 Currently using the [MIT license](LICENSE) for the project.
