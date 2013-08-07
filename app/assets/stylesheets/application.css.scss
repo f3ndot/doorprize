@@ -10,13 +10,21 @@
 // = require_self
 // = require_tree .
 
+.app-container {
+  padding-top: 60px;
+}
+
+.container-wrapper {
+  background-color: #fff;
+  padding-bottom: 70px;
+}
+
 .navbar {
   border-bottom: 3px solid #f1c40f;
 }
 
 .footer {
   padding: 70px 0;
-  margin-top: 70px;
   border-top: 1px solid #e5e5e5;
   background-color: #f5f5f5;
   p {

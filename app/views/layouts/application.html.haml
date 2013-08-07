@@ -18,33 +18,33 @@
 
 
   %body
-    .navbar.navbar-fixed-top.navbar-inverse
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to 'doored.ca', root_path, class: 'brand'
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Home", root_path
-              %li= link_to "Report Incident", new_incident_path
+    .container-wrapper
+      .navbar.navbar-fixed-top.navbar-inverse
+        .navbar-inner
+          .container
+            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to 'doored.ca', root_path, class: 'brand'
+            .container.nav-collapse
+              %ul.nav
+                %li= link_to "Home", root_path
+                %li= link_to "Report Incident", new_incident_path
 
-    .container.app-container
-
-      .row
-        .span9
-          = bootstrap_flash
-          = yield
-        .span3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+      .container.app-container
+        .row
+          .span9
+            = bootstrap_flash
+            = yield
+          .span3
+            .well.sidebar-nav
+              %h3 Sidebar
+              %ul.nav.nav-list
+                %li.nav-header Sidebar
+                %li= link_to "Link 1", "/path1"
+                %li= link_to "Link 2", "/path2"
+                %li= link_to "Link 3", "/path3"
 
     %footer.footer
       .container
