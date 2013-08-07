@@ -15,6 +15,9 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
+# Heroku plugin
+gem 'rails_12factor', group: :production
+
 # Use a DSL so forms don't suck
 gem 'simple_form', '~> 3.0.0.rc'
 
