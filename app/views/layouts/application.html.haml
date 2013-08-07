@@ -46,8 +46,23 @@
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
 
-      %footer
-        %p &copy; Company 2013
+    %footer.footer
+      .container
+        %p.pull-right
+          = link_to 'Back to top', '#'
+        %p
+          Created and maintained by
+          = link_to '@f3ndot', 'https://www.twitter.com/f3ndot'
+        %p
+          Provided as a free service to the
+          = link_to '#bikeTO', 'https://www.twitter.com/search?q=%23BikeTO'
+          community
+        %p
+          Available as full
+          = link_to 'open source code', 'https://www.github.com/f3ndot/doorprize'
+          under the
+          = link_to 'MIT license', 'https://en.wikipedia.org/wiki/MIT_License'
+        .footer-links
     /
       Javascripts
       \==================================================

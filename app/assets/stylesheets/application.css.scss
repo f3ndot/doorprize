@@ -1,0 +1,39 @@
+//  This is a manifest file that'll be compiled into application.css, which will include all the files
+//  listed below.
+//
+//  Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+//  or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+//
+//  You're free to add application-wide styles to this file and they'll appear at the top of the
+//  compiled file, but it's generally better to create a new file per style scope.
+//
+// = require_self
+// = require_tree .
+
+.navbar {
+  border-bottom: 3px solid #f1c40f;
+}
+
+.footer {
+  padding: 70px 0;
+  margin-top: 70px;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f5f5f5;
+  p {
+    margin-bottom: 0;
+    color: #777;
+  }
+  .footer-links {
+    margin: 15px 0;
+    ul {
+      margin: 0;
+    }
+    li {
+      display: inline;
+      padding: 0 2px;
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}
