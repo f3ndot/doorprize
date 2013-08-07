@@ -11,7 +11,3 @@
  *= require_self
  *= require_tree .
  */
-
-.container {
-  background-color: #ecf0f1;
-}

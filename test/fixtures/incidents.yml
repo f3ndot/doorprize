@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyText
+  datetime_of_incident: 2013-08-06 20:57:31
+  location: MyString
+  injured: false
+  police_report_number: MyString
+  video: MyString
+
+two:
+  description: MyText
+  datetime_of_incident: 2013-08-06 20:57:31
+  location: MyString
+  injured: false
+  police_report_number: MyString
+  video: MyString
