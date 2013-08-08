@@ -18,9 +18,9 @@ Because despite the fact that the Police board wants Toronto cops to review the 
 
 Because I feel it's important to track and record something that's an issue in this community. By not tracking these incidents, how can we even begin adequately address the issue?
 
-  [1]: "http://www.thestar.com/news/gta/transportation/2013/06/25/toronto_cyclists_fear_dooring_but_police_dont_track_it.html" Toronto cyclists fear dooring, but police don't track it
-  [2]: "http://www.thestar.com/news/gta/2013/08/06/toronto_police_wont_track_dooring_until_theyre_ordered_to_do_so.html" Toronto police won't track 'dooring' until they're ordered to do so
-  [3]: "http://www.thestar.com/news/gta/2013/08/06/police_board_wants_toronto_cops_to_review_dooring_policy.html" Police board wants Toronto cops to review ‘dooring’ policy
+  [1]: [Toronto cyclists fear dooring, but police don't track it](http://www.thestar.com/news/gta/transportation/2013/06/25/toronto_cyclists_fear_dooring_but_police_dont_track_it.html)
+  [2]: [Toronto police won't track 'dooring' until they're ordered to do so](http://www.thestar.com/news/gta/2013/08/06/toronto_police_wont_track_dooring_until_theyre_ordered_to_do_so.html)
+  [3]: [Police board wants Toronto cops to review ‘dooring’ policy](http://www.thestar.com/news/gta/2013/08/06/police_board_wants_toronto_cops_to_review_dooring_policy.html)
 
 Application Details
 -------------------
