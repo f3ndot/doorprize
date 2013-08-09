@@ -19,7 +19,14 @@
 
   %body
     .container-wrapper
-      .navbar.navbar-fixed-top.navbar-inverse
+
+      - if Rails.env.development?
+        .dev-warning
+          .container
+            %strong Hey there!
+            This is the development server. Users can test new features and provide feedback to the developers. Just so you know, things can break here!
+
+      .navbar.navbar-fixed-top.navbar-inverse.no-top
         .navbar-inner
           .container
             %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
