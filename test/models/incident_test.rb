@@ -16,4 +16,8 @@ class IncidentTest < ActiveSupport::TestCase
     refute incident_one.severity.between?(min_range, max_range)
     refute incident_two.severity.between?(min_range, max_range)
   end
+
+  test "severity text output" do
+    assert_equal "Little to no injury. Scuffs and scrapes", incidents(:one).severity_text
+  end
 end
