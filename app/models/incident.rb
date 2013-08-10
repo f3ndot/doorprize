@@ -6,6 +6,10 @@ class Incident < ActiveRecord::Base
   validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
 
   def severity_text
+    Incident.severity_text(severity)
+  end
+
+  def self.severity_text(severity)
     case severity
     when 0..1
       'Little to no injury. Scuffs and scrapes'
