@@ -20,7 +20,7 @@ class Incident < ActiveRecord::Base
     when 10
       'Life in imminent danger or death'
     else
-      raise RangeError, "Not a valid severity range. Must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}"
+      'Unknown severity'
     end
   end
 
