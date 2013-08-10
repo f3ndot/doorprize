@@ -6,6 +6,7 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:description)
+      %th= model_class.human_attribute_name(:severity)
       %th= model_class.human_attribute_name(:datetime_of_incident)
       %th= model_class.human_attribute_name(:location)
       %th= model_class.human_attribute_name(:injured)
@@ -18,6 +19,7 @@
       %tr
         %td= link_to incident.id, incident_path(incident)
         %td= incident.description
+        %td= incident.severity_text
         %td= incident.datetime_of_incident
         %td= incident.location
         %td= incident.injured

@@ -19,6 +19,10 @@
   %br
   = @incident.injured
 %p
+  %strong= model_class.human_attribute_name(:severity) + ':'
+  %br
+  = @incident.severity_text
+%p
   %strong= model_class.human_attribute_name(:police_report_number) + ':'
   %br
   = @incident.police_report_number
