@@ -3,7 +3,7 @@ class Incident < ActiveRecord::Base
   MIN_SEVERITY = 0
   MAX_SEVERITY = 10
 
-  validates :severity, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY }
+  validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
 
   def severity_text
     case severity
