@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Doorprize::Application.config.secret_key_base = 'da4a3f861b2eabc0be3fc0ef74b2ea3f7ba07d9d43ad9596ff411866831ddead6c7e6eddee5800ccd02563044aca016517d35bb2068b0d247496f39329a37bca'
+Doorprize::Application.config.secret_key_base = ENV['DOORED_SECRET_TOKEN_KEY']
