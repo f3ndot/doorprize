@@ -19,6 +19,11 @@
   %br
   = @incident.injured
 %p
+  %strong= model_class.human_attribute_name(:severity) + ':'
+  %br
+  %span{style: "color: #{@incident.severity_color}"}= @incident.severity_text
+  %span.muted= "(Level #{@incident.severity})"
+%p
   %strong= model_class.human_attribute_name(:police_report_number) + ':'
   %br
   = @incident.police_report_number
