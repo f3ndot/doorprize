@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  description: MyText
-  make: MyString
-  color: MyString
-  license_plate: MyString
-  damage: MyString
-  incident_id: 
-  driver_name: MyString
-  driver_contact: MyText
+volvo:
+  description: Had a bunch of bumper stickers
+  make: Volvo 850E Turbo
+  color: Black
+  license_plate: A1A1 AA1A
+  damage: His left side mirror was blown off
+  incident_id: 1
+  driver_name: Johnny Appleseed
+  driver_contact: His phone number was 416-555-7131
 
-two:
+bmw:
   description: MyText
-  make: MyString
-  color: MyString
-  license_plate: MyString
-  damage: MyString
-  incident_id: 
-  driver_name: MyString
-  driver_contact: MyText
+  make: BMW
+  color:
+  license_plate:
+  damage:
+  incident_id: 2
+  driver_name:
+  driver_contact:
