@@ -4,6 +4,16 @@
 
 jQuery ->
   $("input#incident_severity").on 'change', (e) ->
-    severity = $(this).val()
-    severity_text = $('.severity-levels .severity[data-level=' + severity + ']').text()
+    severity_level = parseInt $(this).val(), 10
+    severity = $('.severity-levels .severity[data-level=' + severity_level + ']')
+
+    severity_text = severity.text()
+    severity_color = severity.data 'color'
+
     $('.incident_severity .help-block').text severity_text
+    $('.incident_severity .help-block').css 'color', severity_color
+
+    if severity_level is 10
+      $('.incident_severity .help-block').css 'font-weight', 'bold'
+    else
+      $('.incident_severity .help-block').css 'font-weight', 'normal'

@@ -11,5 +11,5 @@
 
 .severity-levels{style: 'display:none'}
   - for i in 0..10
-    .severity{ data: { level: i } }
+    .severity{ data: { level: i, color: Incident.severity_color(i) } }
       = Incident.severity_text i

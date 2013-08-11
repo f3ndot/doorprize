@@ -28,4 +28,23 @@ class Incident < ActiveRecord::Base
     end
   end
 
+  def self.severity_color(severity)
+    case severity
+    when 0..1
+      '#bfc053'
+    when 2..3
+      '#c0af53'
+    when 4..5
+      '#c09853'
+    when 6..7
+      '#c08153'
+    when 8..9
+      '#b94a48'
+    when 10
+      '#c60000'
+    else
+      '#3a87ad'
+    end
+  end
+
 end

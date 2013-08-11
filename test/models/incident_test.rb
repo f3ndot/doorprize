@@ -20,4 +20,11 @@ class IncidentTest < ActiveSupport::TestCase
   test "severity text output" do
     assert_equal "Little to no injury. Scuffs and scrapes", incidents(:one).severity_text
   end
+
+  test "severity color" do
+    for i in 0..10
+      assert_match /#[0-9a-f]{3}|[0-9a-f]{6}/, Incident.severity_color(i)
+    end
+  end
+
 end
