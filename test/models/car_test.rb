@@ -3,9 +3,7 @@ require 'test_helper'
 class CarTest < ActiveSupport::TestCase
   test "at least one field is filled" do
     refute Car.new().valid?
-    assert Car.new({description: 'A shitty van hit me'}).valid?
-    assert cars(:volvo).valid?
-    assert cars(:bmw).valid?
+    assert Car.new({description: 'A shitty van hit me', incident: incidents(:one)}).valid?
   end
 
   test "license plate always in uppercase" do
