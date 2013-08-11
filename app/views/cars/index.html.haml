@@ -1,0 +1,21 @@
+- model_class = Car
+.page-header
+  %h1 Recorded Vehicles
+%table.table.table-striped
+  %thead
+    %tr
+      %th Assoc. Incident
+      %th= model_class.human_attribute_name(:make)
+      %th= model_class.human_attribute_name(:color)
+      %th= model_class.human_attribute_name(:license_plate)
+      %th= model_class.human_attribute_name(:driver_name)
+      %th Details
+  %tbody
+    - @cars.each do |car|
+      %tr
+        %td= link_to car.incident.short_name, incident_path(car.incident)
+        %td= car.make
+        %td= car.color
+        %td= car.license_plate
+        %td= car.driver_name
+        %td= link_to "See vehicle details", car_path(car)
