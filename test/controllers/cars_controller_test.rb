@@ -3,6 +3,7 @@ require 'test_helper'
 class CarsControllerTest < ActionController::TestCase
   setup do
     @car = cars(:volvo)
+    @car.incident = incidents(:one)
   end
 
   # Commented out until I figure out how to load fixture associations
