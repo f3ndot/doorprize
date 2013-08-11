@@ -30,33 +30,33 @@ Application Installation
 
 1. Clone the source to your computer
 
-```
-git clone git@github.com:f3ndot/doorprize.git
-```
+   ```
+   git clone git@github.com:f3ndot/doorprize.git
+   ```
 
 2. Run bundler
 
-```
-bundle install
-```
+   ```
+   bundle install
+   ```
 
 3. Export the required environment variables:
 
-```bash
-export DOORED_SECRET_TOKEN_KEY=deadbeef8fb5ed059521cbe0ef13c844c7bf5f94d5d1ad051c349d87dab2ec073951619db6aac20438cc5e884c6b7e20758ef672343bf02411e99c229c4fd480
-```
+   ```bash
+   export DOORED_SECRET_TOKEN_KEY=deadbeef8fb5ed059521cbe0ef13c844c7bf5f94d5d1ad051c349d87dab2ec07   3951619db6aac20438cc5e884c6b7e20758ef672343bf02411e99c229c4fd480
+   ```
 
 4. Load the database:
 
-```
-bundle exec rake db:schema:load
-```
+   ```
+   bundle exec rake db:schema:load
+   ```
 
 5. Start the server:
 
-```
-bundle exec rails server
-```
+   ```
+   bundle exec rails server
+   ```
 
 6. Visit the site at `http://localhost:3000`
 
