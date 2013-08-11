@@ -7,6 +7,10 @@ A Rails site where cyclists who were "doored" can report their incident for stat
 
 Currently using the [MIT license](LICENSE) for the project.
 
+### Live Developers Playground / Testing Environment ###
+
+Take a stab! It's located at __[dev.doored.ca](http://dev.doored.ca/)__
+
 Why?
 ----
 
@@ -18,12 +22,8 @@ Because despite the fact that the Police board wants Toronto cops to review the 
 
 Because I feel it's important to track and record something that's an issue in this community. By not tracking these incidents, how can we even begin adequately address the issue?
 
-### Live Developers Playground / Testing Environment ###
-
-Take a stab! It's located at __[dev.doored.ca](http://dev.doored.ca/)__
-
-Application Installation
-------------------------
+Local Application Installation
+------------------------------
 
 *This is very much a __TODO__ part of the README. Assumes you have ruby 2 and bundler*
 
