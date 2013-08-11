@@ -2,8 +2,8 @@ class Car < ActiveRecord::Base
 
   belongs_to :incident, autosave: true, touch: true
 
-  validates :incident, presence: true
-  validate :any_present?
+  validates :incident, presence: true, on: :update
+  validate :any_present?, on: :update
 
   def to_s
     str = "Vehicle ID No. \##{id}"
