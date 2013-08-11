@@ -18,6 +18,48 @@ Because despite the fact that the Police board wants Toronto cops to review the 
 
 Because I feel it's important to track and record something that's an issue in this community. By not tracking these incidents, how can we even begin adequately address the issue?
 
+Developers Playground / Testing Environment
+-------------------------------------------
+
+Take a stab! It's located at __[dev.doored.ca](http://dev.doored.ca/)__
+
+Application Installation
+------------------------
+
+*This is very much a __TODO__ part of the README. Assumes you have ruby 2 and bundler*
+
+1. Clone the source to your computer
+
+```bash
+git@github.com:f3ndot/doorprize.git
+```
+
+2. Run bundler
+
+```bash
+bundle install
+```
+
+3. Export the required environment variables:
+
+```bash
+export DOORED_SECRET_TOKEN_KEY=deadbeef8fb5ed059521cbe0ef13c844c7bf5f94d5d1ad051c349d87dab2ec073951619db6aac20438cc5e884c6b7e20758ef672343bf02411e99c229c4fd480
+```
+
+4. Load the database:
+
+```bash
+bundle exec rake db:schema:load
+```
+
+5. Start the server:
+
+```bash
+bundle exec rails server
+```
+
+6. Visit the site at `http://localhost:3000`
+
 Application Details
 -------------------
 
