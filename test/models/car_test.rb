@@ -1,9 +1,11 @@
 require 'test_helper'
 
 class CarTest < ActiveSupport::TestCase
-  test "description presence" do
-    assert_not_equal "", cars(:volvo).description
-    assert_not_nil cars(:volvo).description
+  test "at least one field is filled" do
+    refute Car.new().valid?
+    assert Car.new({description: 'A shitty van hit me'}).valid?
+    assert cars(:volvo).valid?
+    assert cars(:bmw).valid?
   end
 
   test "license plate always in uppercase" do

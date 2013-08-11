@@ -1,7 +1,4 @@
-%h1 Editing car
-
-= render 'form'
-
-= link_to 'Show', @car
-\|
-= link_to 'Back', cars_path
+- model_class = Car
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"
