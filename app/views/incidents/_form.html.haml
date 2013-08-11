@@ -1,13 +1,17 @@
 = simple_form_for @incident, html: { class: 'form-horizontal' } do |f|
-  = f.input :description
-  = f.input :datetime_of_incident
-  = f.input :location
-  = f.input :injured
-  = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
-  = f.input :police_report_number
-  = f.input :video
-  = f.button :submit, :class => 'btn btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), incidents_path, :class => 'btn'
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+    = f.input :datetime_of_incident
+    = f.input :location
+    = f.input :injured
+    = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
+    = f.input :police_report_number
+    = f.input :video
+
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
 
 .severity-levels{style: 'display:none'}
   - for i in 0..10
