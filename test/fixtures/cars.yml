@@ -7,6 +7,7 @@ volvo:
   license_plate: A1A1 AA1A
   damage: His left side mirror was blown off
   incident_id: 1
+  incident: one (Incident)
   driver_name: Johnny Appleseed
   driver_contact: His phone number was 416-555-7131
 
@@ -17,5 +18,6 @@ bmw:
   license_plate:
   damage:
   incident_id: 2
+  incident: two (Incident)
   driver_name:
   driver_contact:
