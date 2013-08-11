@@ -6,6 +6,10 @@
   = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
   = f.input :police_report_number
   = f.input :video
+  %h4 The vehicle
+  = f.simple_fields_for :car do |car|
+    = render 'car_fields', f: car
+
   = f.button :submit, :class => 'btn btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), incidents_path, :class => 'btn'
 
