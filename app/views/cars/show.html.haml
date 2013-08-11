@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @car.description
+%p
+  %b Make:
+  = @car.make
+%p
+  %b Color:
+  = @car.color
+%p
+  %b License plate:
+  = @car.license_plate
+%p
+  %b Damage:
+  = @car.damage
+%p
+  %b Incident:
+  = @car.incident
+%p
+  %b Driver name:
+  = @car.driver_name
+%p
+  %b Driver contact:
+  = @car.driver_contact
+
+= link_to 'Edit', edit_car_path(@car)
+\|
+= link_to 'Back', cars_path

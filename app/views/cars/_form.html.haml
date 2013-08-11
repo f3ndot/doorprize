@@ -1,0 +1,15 @@
+= simple_form_for(@car) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+    = f.input :make
+    = f.input :color
+    = f.input :license_plate
+    = f.input :damage
+    = f.association :incident
+    = f.input :driver_name
+    = f.input :driver_contact
+
+  .form-actions
+    = f.button :submit

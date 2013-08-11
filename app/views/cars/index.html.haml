@@ -1,0 +1,33 @@
+%h1 Listing cars
+
+%table
+  %tr
+    %th Description
+    %th Make
+    %th Color
+    %th License plate
+    %th Damage
+    %th Incident
+    %th Driver name
+    %th Driver contact
+    %th
+    %th
+    %th
+
+  - @cars.each do |car|
+    %tr
+      %td= car.description
+      %td= car.make
+      %td= car.color
+      %td= car.license_plate
+      %td= car.damage
+      %td= car.incident
+      %td= car.driver_name
+      %td= car.driver_contact
+      %td= link_to 'Show', car
+      %td= link_to 'Edit', edit_car_path(car)
+      %td= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Car', new_car_path
