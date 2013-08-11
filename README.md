@@ -22,8 +22,19 @@ Because despite the fact that the Police board wants Toronto cops to review the 
 
 Because I feel it's important to track and record something that's an issue in this community. By not tracking these incidents, how can we even begin adequately address the issue?
 
-Local Application Installation
-------------------------------
+
+Developer Collaboration
+-----------------------
+
+### Application Details ###
+
+- Ruby on Rails 4 framework
+- Developed with Ruby 2.0.0
+- Using HTML5, CSS, CoffeeScript, LESS for front-end
+- Database *probably* will be Postgres
+- Considering Heroku or Linode for hosting
+
+### Local Application Installation ###
 
 *This is very much a __TODO__ part of the README. Assumes you have ruby 2 and bundler*
 
@@ -59,14 +70,14 @@ Local Application Installation
 
 6. Visit the site at `http://localhost:3000`
 
-Application Details
--------------------
+### Note on Patches/Pull Requests ###
 
-- Ruby on Rails 4 framework
-- Developed with Ruby 2.0.0
-- Using HTML5, CSS, CoffeeScript, LESS for front-end
-- Database *probably* will be Postgres
-- Considering Heroku or Linode for hosting
+- Fork the project.
+- Make your feature addition or bug fix on a new branch.
+- Add tests for it!
+- Commit, do not mess with version, or history.
+- Send me a pull request. Bonus points for topic branches.
+
 
 * * *
 
