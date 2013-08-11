@@ -18,8 +18,7 @@ Because despite the fact that the Police board wants Toronto cops to review the 
 
 Because I feel it's important to track and record something that's an issue in this community. By not tracking these incidents, how can we even begin adequately address the issue?
 
-Developers Playground / Testing Environment
--------------------------------------------
+### Live Developers Playground / Testing Environment ###
 
 Take a stab! It's located at __[dev.doored.ca](http://dev.doored.ca/)__
 
