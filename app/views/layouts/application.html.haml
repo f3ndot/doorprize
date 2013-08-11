@@ -36,8 +36,9 @@
             = link_to 'doored.ca', root_path, class: 'brand'
             .container.nav-collapse
               %ul.nav
-                %li= link_to "Home", root_path
                 %li= link_to "Report Incident", new_incident_path
+                %li= link_to "Recorded Incidents", root_path
+                %li= link_to "Recorded Vehicles", cars_path
 
       .container.app-container
         .row
