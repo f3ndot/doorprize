@@ -2,6 +2,7 @@ class Car < ActiveRecord::Base
 
   belongs_to :incident, autosave: true, touch: true
 
+  validates :incident, presence: true
   validate :any_present?
 
   # Make sure that license plates are stored in uppercase
