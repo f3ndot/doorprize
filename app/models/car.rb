@@ -5,8 +5,8 @@ class Car < ActiveRecord::Base
   validates :description, presence: true
 
   # Make sure that license plates are stored in uppercase
-  def licence_plate=(plate)
-    write_attribute :licence_plate, plate.upcase
+  def license_plate=(plate)
+    write_attribute :license_plate, plate.upcase
   end
 
 end
