@@ -1,6 +1,6 @@
 class Car < ActiveRecord::Base
 
-  belongs_to :incident
+  belongs_to :incident, autosave: true, touch: true
 
   validate :any_present?
 

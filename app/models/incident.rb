@@ -1,6 +1,6 @@
 class Incident < ActiveRecord::Base
 
-  has_one :car
+  has_one :car, autosave: true, dependent: :destroy, validate: true
 
   MIN_SEVERITY = 0
   MAX_SEVERITY = 10
