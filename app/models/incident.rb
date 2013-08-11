@@ -1,9 +1,27 @@
 class Incident < ActiveRecord::Base
 
+  has_one :car, autosave: true, dependent: :destroy
+  accepts_nested_attributes_for :car, allow_destroy: true, reject_if: :all_blank
+
   MIN_SEVERITY = 0
   MAX_SEVERITY = 10
 
   validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
+
+  def to_s
+    "Incident No. \##{id} - Date: #{datetime_of_incident} - Severity Level #{severity}"
+  end
+
+  def short_name
+    "No. \##{id}"
+  end
+
+  def car_licence
+    if car.present?
+      return "No. \##{car.id}" if car.license_plate.blank?
+      car.license_plate
+    end
+  end
 
   def severity_text
     Incident.severity_text(severity)

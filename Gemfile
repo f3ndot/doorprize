@@ -20,6 +20,7 @@ gem 'rails_12factor', group: :production
 
 # Use a DSL so forms don't suck
 gem 'simple_form', '~> 3.0.0.rc'
+gem 'cocoon', '1.2.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

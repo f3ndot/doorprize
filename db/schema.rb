@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130810215336) do
+ActiveRecord::Schema.define(version: 20130811164804) do
+
+  create_table "cars", force: true do |t|
+    t.text     "description"
+    t.string   "make"
+    t.string   "color"
+    t.string   "license_plate"
+    t.string   "damage"
+    t.integer  "incident_id"
+    t.string   "driver_name"
+    t.text     "driver_contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cars", ["incident_id"], name: "index_cars_on_incident_id"
 
   create_table "incidents", force: true do |t|
     t.text     "description"

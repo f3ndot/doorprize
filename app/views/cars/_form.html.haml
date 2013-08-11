@@ -1,0 +1,23 @@
+= simple_form_for @car, :html => { :class => 'form-horizontal' } do |f|
+
+  = f.error_notification
+
+  - if f.error_notification.nil?
+    .alert
+      To incude a car in the report please fill in
+      %strong at least one of the fields
+      below:
+
+  .form-inputs
+    = f.input :description
+    = f.input :make, placeholder: '1993 Volvo 850E Turbo'
+    = f.input :color
+    = f.input :license_plate, placeholder: 'BHAM 244', hint: 'Try to include the space as shown on actual plates'
+    = f.input :damage, hint: 'Describe damage the car sustained'
+    = f.association :incident
+    = f.input :driver_name
+    = f.input :driver_contact
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), cars_path, :class => 'btn'
