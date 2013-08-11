@@ -30,13 +30,13 @@ Application Installation
 
 1. Clone the source to your computer
 
-```bash
-git@github.com:f3ndot/doorprize.git
+```
+git clone git@github.com:f3ndot/doorprize.git
 ```
 
 2. Run bundler
 
-```bash
+```
 bundle install
 ```
 
@@ -48,13 +48,13 @@ export DOORED_SECRET_TOKEN_KEY=deadbeef8fb5ed059521cbe0ef13c844c7bf5f94d5d1ad051
 
 4. Load the database:
 
-```bash
+```
 bundle exec rake db:schema:load
 ```
 
 5. Start the server:
 
-```bash
+```
 bundle exec rails server
 ```
 
