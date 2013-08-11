@@ -1,6 +1,6 @@
 - model_class = Car
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1= "Vehicle ID No. \##{@car.id} Details"
 
 %p
   %strong= model_class.human_attribute_name(:description) + ':'
@@ -25,7 +25,7 @@
 %p
   %strong= model_class.human_attribute_name(:incident_id) + ':'
   %br
-  = @car.incident_id
+  = link_to @car.incident, incident_path(@car.incident)
 %p
   %strong= model_class.human_attribute_name(:driver_name) + ':'
   %br

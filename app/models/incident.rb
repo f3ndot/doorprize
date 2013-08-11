@@ -12,6 +12,17 @@ class Incident < ActiveRecord::Base
     "Incident No. \##{id} - Date: #{datetime_of_incident} - Severity Level #{severity}"
   end
 
+  def short_name
+    "No. \##{id}"
+  end
+
+  def car_licence
+    if car.present?
+      return "No. \##{car.id}" if car.license_plate.blank?
+      car.license_plate
+    end
+  end
+
   def severity_text
     Incident.severity_text(severity)
   end

@@ -5,6 +5,12 @@ class Car < ActiveRecord::Base
   validates :incident, presence: true
   validate :any_present?
 
+  def to_s
+    str = "Vehicle ID No. \##{id}"
+    str << " - Licence Plate: #{license_plate}" if license_plate.present?
+    return str
+  end
+
   # Make sure that license plates are stored in uppercase
   def license_plate=(plate)
     write_attribute :license_plate, plate.upcase

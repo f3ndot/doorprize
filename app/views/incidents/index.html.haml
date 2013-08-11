@@ -12,6 +12,7 @@
       %th= model_class.human_attribute_name(:injured)
       %th= model_class.human_attribute_name(:police_report_number)
       %th= model_class.human_attribute_name(:video)
+      %th Vehicle
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -25,6 +26,10 @@
         %td= incident.injured
         %td= incident.police_report_number
         %td= incident.video
+        - if incident.car_licence
+          %td= link_to incident.car_licence, car_path(incident.car)
+        - else
+          %td No
         %td=l incident.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_incident_path(incident), :class => 'btn btn-mini'

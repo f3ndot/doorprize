@@ -32,6 +32,12 @@
   %br
   = @incident.video
 
+- if @incident.car.present?
+  %p
+    %strong Associated Vehicle:
+    %br
+    = link_to @incident.car, car_path(@incident.car)
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), incidents_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_incident_path(@incident), :class => 'btn'
