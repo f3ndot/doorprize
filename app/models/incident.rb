@@ -9,6 +9,10 @@ class Incident < ActiveRecord::Base
     Incident.severity_text(severity)
   end
 
+  def severity_color
+    Incident.severity_color(severity)
+  end
+
   def self.severity_text(severity)
     case severity
     when 0..1

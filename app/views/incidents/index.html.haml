@@ -19,7 +19,7 @@
       %tr
         %td= link_to incident.id, incident_path(incident)
         %td= incident.description
-        %td= incident.severity_text
+        %td{style: "color: #{incident.severity_color}"}= incident.severity_text
         %td= incident.datetime_of_incident
         %td= incident.location
         %td= incident.injured
