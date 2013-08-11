@@ -1,5 +1,7 @@
 class Incident < ActiveRecord::Base
 
+  has_one :car
+
   MIN_SEVERITY = 0
   MAX_SEVERITY = 10
 
