@@ -26,7 +26,7 @@
             %strong Hey there!
             This is the development server. Users can test new features and provide feedback to the developers. Just so you know, things can break here!
 
-      .navbar.navbar-fixed-top.navbar-inverse.no-top
+      .navbar.navbar-fixed-top.navbar-inverse{ class: ('offset-dev-warning-top' if Rails.env.development?) }
         .navbar-inner
           .container
             %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")

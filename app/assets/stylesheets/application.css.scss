@@ -23,11 +23,16 @@
   border-bottom: 3px solid #f1c40f;
 }
 
-.navbar-fixed-top.no-top {
-  top: auto;
+.navbar-fixed-top.offset-dev-warning-top {
+  top: 26px;
 }
 
 .dev-warning {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 26px;
   padding: 3px;
   font-weight: 600;
   font-size: 14px;
