@@ -9,7 +9,25 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.json
   def index
-    @incidents = Incident.all
+    sort_param = params.permit(:sort)[:sort]
+
+    case sort_param
+    when 'latest', 'newest'
+      @incidents = Incident.latest_incidents
+    when 'oldest'
+      @incidents = Incident.oldest_incidents
+    when 'latest-submitted', 'newest-submitted'
+      @incidents = Incident.latest_submitted
+    when 'oldest-submitted'
+      @incidents = Incident.oldest_submitted
+    when 'most-severe'
+      @incidents = Incident.most_severe
+    when 'least-severe'
+      @incidents = Incident.least_severe
+    else
+      redirect_to incidents_path if sort_param.present?
+      @incidents = Incident.all
+    end
   end
 
   # GET /incidents/1
