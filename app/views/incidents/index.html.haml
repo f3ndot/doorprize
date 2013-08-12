@@ -1,6 +1,15 @@
 - model_class = Incident
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+.dropdown.pull-right
+  %a.btn.btn-small.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
+    %i.icon-sort
+    %strong Sort by
+    = @sorted_by
+  %ul.dropdown-menu{ role: 'menu', aria: { labelledby: 'dLabel' } }
+    - @sortable_words.each do |key,val|
+      - if val != @sorted_by
+        %li{ role: 'presentation' }= link_to val, sorted_incidents_path(key.to_s.tr('_', '-'))
 %table.table.table-striped
   %thead
     %tr
@@ -34,5 +43,12 @@
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_incident_path(incident), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), incident_path(incident), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+.row
+  .span12
+    .pagination-info.pull-right= page_entries_info @incidents
+.row
+  .span12
+    .pagination-foot{style: 'text-align: center'}= paginate @incidents, theme: 'twitter-bootstrap'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_incident_path, :class => 'btn btn-primary'
