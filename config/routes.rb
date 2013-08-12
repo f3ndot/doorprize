@@ -3,7 +3,7 @@ Doorprize::Application.routes.draw do
 
   resources :incidents do
     collection do
-      get 'sort/:sort', to: 'incidents#index'
+      get 'sort/:sort', to: 'incidents#index', as: :sorted
     end
   end
 
