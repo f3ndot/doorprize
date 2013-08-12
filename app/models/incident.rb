@@ -16,6 +16,7 @@ class Incident < ActiveRecord::Base
     "No. \##{id}"
   end
 
+  # TODO This is a dependency code-smell. Move into Car model
   def car_licence
     if car.present?
       return "No. \##{car.id}" if car.license_plate.blank?
