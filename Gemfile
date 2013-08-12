@@ -51,6 +51,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use thin because I'm lazy
 gem 'thin'
 
+# Try out this new pagination gem
+gem 'kaminari'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
