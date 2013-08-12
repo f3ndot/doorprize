@@ -53,6 +53,7 @@ gem 'thin'
 
 # Try out this new pagination gem
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 # Use unicorn as the app server
 # gem 'unicorn'
