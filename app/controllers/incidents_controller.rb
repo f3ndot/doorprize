@@ -9,32 +9,32 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.json
   def index
-    sort_param = params.permit(:sort)[:sort]
+    safe_params = params.permit :sort, :page
     @sortable_words = {latest: 'Latest incidents', oldest: 'Oldest incidents', latest_submitted: 'Newest submissions', oldest_submitted: 'Oldest submissions', most_severe: 'Most severe', least_severe: 'Least severe'}
 
-    case sort_param
+    case safe_params[:sort]
     when 'latest', 'newest'
-      incidents = Incident.latest_incidents
+      incidents = Incident.latest_incidents.page safe_params[:page]
       sorted_by = 'Latest incidents'
     when 'oldest'
-      incidents = Incident.oldest_incidents
+      incidents = Incident.oldest_incidents.page safe_params[:page]
       sorted_by = 'Oldest incidents'
     when 'latest-submitted', 'newest-submitted'
-      incidents = Incident.latest_submitted
+      incidents = Incident.latest_submitted.page safe_params[:page]
       sorted_by = 'Newest submissions'
     when 'oldest-submitted'
-      incidents = Incident.oldest_submitted
+      incidents = Incident.oldest_submitted.page safe_params[:page]
       sorted_by = 'Oldest submissions'
     when 'most-severe'
-      incidents = Incident.most_severe
+      incidents = Incident.most_severe.page safe_params[:page]
       sorted_by = 'Most severe'
     when 'least-severe'
-      incidents = Incident.least_severe
+      incidents = Incident.least_severe.page safe_params[:page]
       sorted_by = 'Least severe'
     else
-      redirect_to incidents_path if sort_param.present?
+      redirect_to incidents_path if safe_params[:sort].present?
       sorted_by = 'Latest incidents'
-      incidents = Incident.all
+      incidents = Incident.all.page safe_params[:page]
     end
 
       @sorted_by = sorted_by
