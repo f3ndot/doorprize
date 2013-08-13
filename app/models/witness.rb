@@ -1,7 +1,8 @@
 class Witness < ActiveRecord::Base
-  # belongs_to :incident, autosave: true
+  
+  belongs_to :incident, autosave: true
 
-  # validates :incident, presence: true, on: :update
+  validates :incident, presence: true, on: :update
   validates :name, presence: true
 
   def name

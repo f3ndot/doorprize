@@ -3,6 +3,7 @@ require 'test_helper'
 class WitnessesControllerTest < ActionController::TestCase
   setup do
     @witness = witnesses(:alice)
+    @witness.incident = incidents(:one)
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class WitnessesControllerTest < ActionController::TestCase
 
   test "should create witness" do
     assert_difference('Witness.count') do
-      post :create, witness: { contact: @witness.contact, name: @witness.name, privacy_level: @witness.privacy_level }
+      post :create, witness: { contact: @witness.contact, name: @witness.name, privacy_level: @witness.privacy_level, incident_id: @witness.incident_id }
     end
 
     assert_redirected_to witness_path(assigns(:witness))
@@ -35,7 +36,7 @@ class WitnessesControllerTest < ActionController::TestCase
   end
 
   test "should update witness" do
-    patch :update, id: @witness, witness: { contact: @witness.contact, name: @witness.name, privacy_level: @witness.privacy_level }
+    patch :update, id: @witness, witness: { contact: @witness.contact, name: @witness.name, privacy_level: @witness.privacy_level, incident_id: @witness.incident_id }
     assert_redirected_to witness_path(assigns(:witness))
   end
 
