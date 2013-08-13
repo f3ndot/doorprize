@@ -1,7 +1,11 @@
 Doorprize::Application.routes.draw do
   resources :cars
 
-  resources :incidents
+  resources :incidents do
+    collection do
+      get 'sort/:sort', to: 'incidents#index', as: :sorted
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

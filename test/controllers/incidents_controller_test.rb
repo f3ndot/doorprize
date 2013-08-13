@@ -23,6 +23,48 @@ class IncidentsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:incidents)
   end
 
+  test "should sort index by newest incidents" do
+    get :index, sort: 'latest'
+    assert_response :success
+    assert_not_nil assigns(:incidents)
+    assert assigns(:incidents)[0].datetime_of_incident > assigns(:incidents)[1].datetime_of_incident, 'First result is not newer than second'
+  end
+
+  test "should sort index by oldest incidents" do
+    get :index, sort: 'oldest'
+    assert_response :success
+    assert_not_nil assigns(:incidents)
+    assert assigns(:incidents)[0].datetime_of_incident < assigns(:incidents)[1].datetime_of_incident, 'First result is not older than second'
+  end
+
+  test "should sort index by newest submission" do
+    get :index, sort: 'latest-submitted'
+    assert_response :success
+    assert_not_nil assigns(:incidents)
+    assert assigns(:incidents)[0].created_at > assigns(:incidents)[1].created_at, 'First result\'s submission date is not newer than second'
+  end
+
+  test "should sort index by oldest submission" do
+    get :index, sort: 'oldest-submitted'
+    assert_response :success
+    assert_not_nil assigns(:incidents)
+    assert assigns(:incidents)[0].created_at < assigns(:incidents)[1].created_at, 'First result\'s submission date is not older than second'
+  end
+
+  test "should sort index by most severe" do
+    get :index, sort: 'most-severe'
+    assert_response :success
+    assert_not_nil assigns(:incidents)
+    assert assigns(:incidents)[0].severity > assigns(:incidents)[1].severity, 'First result is not more severe than second'
+  end
+
+  test "should sort index by least severe" do
+    get :index, sort: 'least-severe'
+    assert_response :success
+    assert_not_nil assigns(:incidents)
+    assert assigns(:incidents)[0].severity < assigns(:incidents)[1].severity, 'First result is not less severe than second'
+  end
+
   test "should get new" do
     get :new
     assert_response :success

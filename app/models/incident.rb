@@ -8,6 +8,13 @@ class Incident < ActiveRecord::Base
 
   validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
 
+  scope :latest_incidents, -> { order 'datetime_of_incident DESC' }
+  scope :oldest_incidents, -> { order 'datetime_of_incident ASC' }
+  scope :latest_submitted, -> { order 'created_at DESC' }
+  scope :oldest_submitted, -> { order 'created_at ASC' }
+  scope :most_severe, -> { order 'severity DESC' }
+  scope :least_severe, -> { order 'severity ASC' }
+
   def to_s
     "Incident No. \##{id} - Date: #{datetime_of_incident} - Severity Level #{severity}"
   end
@@ -16,6 +23,7 @@ class Incident < ActiveRecord::Base
     "No. \##{id}"
   end
 
+  # TODO This is a dependency code-smell. Move into Car model
   def car_licence
     if car.present?
       return "No. \##{car.id}" if car.license_plate.blank?
