@@ -11,6 +11,13 @@
   %h4 The vehicle
   = f.simple_fields_for :car do |car|
     = render 'car_fields', f: car
+  %h4 Witnesses
+  / witnesses
+  = f.simple_fields_for :witnesses do |witnesses|
+    = render 'witness_fields', f: witnesses
+  .links.control-group
+    .controls
+      = link_to_add_association 'Add a witness', f, :witnesses, class: 'btn btn-small'
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
