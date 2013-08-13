@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+alice:
+  name: Alice Doe
+  contact: Cell phone 416-555-1246
+  privacy_level: 1
+  incident_id: 1
+
+bob:
+  name: Bob Smith
+  contact: "11 Fake St.,\n Toronto ON  X1X 1X1"
+  privacy_level: 0
+  incident_id: 2

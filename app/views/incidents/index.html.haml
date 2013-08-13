@@ -19,6 +19,7 @@
       %th= model_class.human_attribute_name(:police_report_number)
       %th= model_class.human_attribute_name(:video)
       %th Vehicle
+      %th Witnesses
       %th= model_class.human_attribute_name(:datetime_of_incident)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
@@ -44,6 +45,11 @@
           %td= link_to incident.car_licence, car_path(incident.car)
         - else
           %td No
+        %td
+          - if incident.witnesses.count > 0
+            = link_to pluralize(incident.witnesses.count, 'witness'), incident_path(incident)
+          - else
+            No
         %td
           %a.date-link{ rel: 'tooltip', title: l(incident.datetime_of_incident) }
             = time_ago_in_words incident.datetime_of_incident, include_seconds: true

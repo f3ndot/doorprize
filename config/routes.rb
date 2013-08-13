@@ -1,4 +1,6 @@
 Doorprize::Application.routes.draw do
+  resources :witnesses
+
   resources :cars
 
   resources :incidents do
