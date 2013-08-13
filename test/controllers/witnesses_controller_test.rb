@@ -2,7 +2,7 @@ require 'test_helper'
 
 class WitnessesControllerTest < ActionController::TestCase
   setup do
-    @witness = witnesses(:one)
+    @witness = witnesses(:alice)
   end
 
   test "should get index" do

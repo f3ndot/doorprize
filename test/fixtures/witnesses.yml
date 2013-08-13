@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  contact: MyText
+alice:
+  name: Alice Doe
+  contact: Cell phone 416-555-1246
   privacy_level: 1
 
-two:
-  name: MyString
-  contact: MyText
-  privacy_level: 1
+bob:
+  name: Bob Smith
+  contact: "11 Fake St.,\n Toronto ON  X1X 1X1"
+  privacy_level: 0
