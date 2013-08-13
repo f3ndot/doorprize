@@ -50,11 +50,13 @@ class IncidentsController < ApplicationController
   def new
     @incident = Incident.new
     @incident.build_car
+    @incident.witnesses.build
   end
 
   # GET /incidents/1/edit
   def edit
     @incident.build_car if @incident.car.nil?
+    @incident.witnesses.build if @incident.witnesses.count == 0
   end
 
   # POST /incidents
@@ -105,6 +107,6 @@ class IncidentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incident_params
-      params.require(:incident).permit(:description, :datetime_of_incident, :location, :injured, :police_report_number, :video, :severity, car_attributes: [:id, :description, :make, :color, :license_plate, :damage, :driver_name, :driver_contact])
+      params.require(:incident).permit(:description, :datetime_of_incident, :location, :police_report_number, :video, :severity, car_attributes: [:id, :description, :make, :color, :license_plate, :damage, :driver_name, :driver_contact], witness_attributes: [:id, :name, :privacy_level, :contact])
     end
 end
