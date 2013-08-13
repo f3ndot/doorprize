@@ -5,7 +5,6 @@
     = f.input :description
     = f.input :datetime_of_incident
     = f.input :location
-    = f.input :injured
     = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
     = f.input :police_report_number
     = f.input :video
