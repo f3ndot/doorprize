@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130811164804) do
+ActiveRecord::Schema.define(version: 20130813180252) do
 
   create_table "cars", force: true do |t|
     t.text     "description"
@@ -32,12 +32,22 @@ ActiveRecord::Schema.define(version: 20130811164804) do
     t.text     "description"
     t.datetime "datetime_of_incident"
     t.string   "location"
-    t.boolean  "injured"
     t.string   "police_report_number"
     t.string   "video"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "severity"
   end
+
+  create_table "witnesses", force: true do |t|
+    t.string   "name"
+    t.text     "contact"
+    t.integer  "privacy_level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "incident_id"
+  end
+
+  add_index "witnesses", ["incident_id"], name: "index_witnesses_on_incident_id"
 
 end

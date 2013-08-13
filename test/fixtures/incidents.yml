@@ -4,7 +4,6 @@ one:
   description: This is my description
   datetime_of_incident: 2011-06-01 12:22:03
   location: MyString
-  injured: false
   police_report_number: ALIDS3990F93
   video: http://www.youtube.com/watch?v=Pw5aHq3Xq1s
   severity: 1
@@ -14,7 +13,6 @@ two:
   description: I rode and got hit
   datetime_of_incident: 2013-08-06 20:57:31
   location: Broadview St. and Dundas St.
-  injured: true
   police_report_number: BH82VRE93EKJL
   video: http://www.youtube.com/watch?v=99RthNHGCjg
   severity: 8

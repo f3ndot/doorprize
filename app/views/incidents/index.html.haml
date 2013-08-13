@@ -18,7 +18,6 @@
       %th= model_class.human_attribute_name(:severity)
       %th= model_class.human_attribute_name(:datetime_of_incident)
       %th= model_class.human_attribute_name(:location)
-      %th= model_class.human_attribute_name(:injured)
       %th= model_class.human_attribute_name(:police_report_number)
       %th= model_class.human_attribute_name(:video)
       %th Vehicle
@@ -32,7 +31,6 @@
         %td{style: "color: #{incident.severity_color}"}= incident.severity_text
         %td= incident.datetime_of_incident
         %td= incident.location
-        %td= incident.injured
         %td= incident.police_report_number
         %td= incident.video
         - if incident.car_licence

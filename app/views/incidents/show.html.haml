@@ -15,10 +15,6 @@
   %br
   = @incident.location
 %p
-  %strong= model_class.human_attribute_name(:injured) + ':'
-  %br
-  = @incident.injured
-%p
   %strong= model_class.human_attribute_name(:severity) + ':'
   %br
   %span{style: "color: #{@incident.severity_color}"}= @incident.severity_text

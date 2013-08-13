@@ -72,7 +72,7 @@ class IncidentsControllerTest < ActionController::TestCase
 
   test "should create incident" do
     assert_difference('Incident.count') do
-      post :create, incident: { datetime_of_incident: @incident.datetime_of_incident, description: @incident.description, injured: @incident.injured, location: @incident.location, police_report_number: @incident.police_report_number, video: @incident.video, severity: @incident.severity }
+      post :create, incident: { datetime_of_incident: @incident.datetime_of_incident, description: @incident.description, location: @incident.location, police_report_number: @incident.police_report_number, video: @incident.video, severity: @incident.severity }
     end
 
     assert_redirected_to incident_path(assigns(:incident))
@@ -89,7 +89,7 @@ class IncidentsControllerTest < ActionController::TestCase
   end
 
   test "should update incident" do
-    patch :update, id: @incident, incident: { datetime_of_incident: @incident.datetime_of_incident, description: @incident.description, injured: @incident.injured, location: @incident.location, police_report_number: @incident.police_report_number, video: @incident.video }
+    patch :update, id: @incident, incident: { datetime_of_incident: @incident.datetime_of_incident, description: @incident.description, location: @incident.location, police_report_number: @incident.police_report_number, video: @incident.video }
     assert_redirected_to incident_path(assigns(:incident))
   end
 
