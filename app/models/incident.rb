@@ -3,6 +3,7 @@ class Incident < ActiveRecord::Base
   has_one :car, autosave: true, dependent: :destroy
   has_many :witnesses, autosave: true, dependent: :destroy
   accepts_nested_attributes_for :car, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :witnesses, allow_destroy: true, reject_if: :all_blank
 
   MIN_SEVERITY = 0
   MAX_SEVERITY = 10
