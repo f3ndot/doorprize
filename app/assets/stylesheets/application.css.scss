@@ -10,29 +10,12 @@
 // = require_self
 // = require_tree .
 
-.app-container {
-  padding-top: 60px;
-}
-
 .container-wrapper {
   background-color: #fff;
   padding-bottom: 70px;
 }
 
-.navbar {
-  border-bottom: 3px solid #f1c40f;
-}
-
-.navbar-fixed-top.offset-dev-warning-top {
-  top: 26px;
-}
-
-.dev-warning {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 26px;
+.yellow-stripe {
   padding: 3px;
   font-weight: 600;
   font-size: 14px;
@@ -48,6 +31,14 @@
   -o-background-size: 40px 40px;
   background-size: 40px 40px;
   text-shadow: 0px -1px 0px #f1c40f;
+  border-bottom: 1px solid #c9a30d;
+}
+
+@media (max-width: 767px) {
+  .yellow-stripe {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
 }
 
 .footer {
