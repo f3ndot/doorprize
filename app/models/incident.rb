@@ -9,6 +9,7 @@ class Incident < ActiveRecord::Base
   MAX_SEVERITY = 10
 
   validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
+  validate :validate_datetime_of_incident
 
   scope :latest_incidents, -> { order 'datetime_of_incident DESC' }
   scope :oldest_incidents, -> { order 'datetime_of_incident ASC' }
@@ -77,6 +78,13 @@ class Incident < ActiveRecord::Base
     else
       '#3a87ad'
     end
+  end
+
+  protected
+
+  def validate_datetime_of_incident
+    errors.add(:datetime_of_incident, "can't be in the future") if datetime_of_incident.future?
+    errors.add(:datetime_of_incident, "can't be blank") if datetime_of_incident.blank?
   end
 
 end

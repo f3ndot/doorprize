@@ -27,4 +27,15 @@ class IncidentTest < ActiveSupport::TestCase
     end
   end
 
+  test "incident datetime cant be in the future" do
+    incident = incidents(:one)
+    refute incident.datetime_of_incident.future?
+    refute incident.datetime_of_incident.blank?
+    assert incident.valid?
+
+    incident.datetime_of_incident = DateTime.now + 1.day
+
+    refute incident.valid?
+  end
+
 end
