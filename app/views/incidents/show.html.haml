@@ -1,6 +1,6 @@
 - model_class = Incident
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1= "Incident ID #{@incident.short_name} Details"
 
 %p
   %strong= model_class.human_attribute_name(:description) + ':'
@@ -10,14 +10,11 @@
   %strong= model_class.human_attribute_name(:datetime_of_incident) + ':'
   %br
   = @incident.datetime_of_incident
+  %span.muted= "(#{time_ago_in_words @incident.datetime_of_incident, include_seconds: true} ago)"
 %p
   %strong= model_class.human_attribute_name(:location) + ':'
   %br
   = @incident.location
-%p
-  %strong= model_class.human_attribute_name(:injured) + ':'
-  %br
-  = @incident.injured
 %p
   %strong= model_class.human_attribute_name(:severity) + ':'
   %br

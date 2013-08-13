@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130813161642) do
+ActiveRecord::Schema.define(version: 20130813180252) do
 
   create_table "cars", force: true do |t|
     t.text     "description"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20130813161642) do
     t.text     "description"
     t.datetime "datetime_of_incident"
     t.string   "location"
-    t.boolean  "injured"
     t.string   "police_report_number"
     t.string   "video"
     t.datetime "created_at"

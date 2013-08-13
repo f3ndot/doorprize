@@ -20,25 +20,34 @@
   %body
     .container-wrapper
 
-      - if Rails.env.development?
-        .dev-warning
-          .container
-            %strong Hey there!
-            This is the development server. Users can test new features and provide feedback to the developers. Just so you know, things can break here!
+      = nav_bar static: :top, brand: 'doored.ca', brand_link: root_path, inverse: true, responsive: true do
+        - menu_group do
+          = menu_item "Report Incident", new_incident_path
+          = menu_item "Recorded Incidents", incidents_path
+          = menu_item "Recorded Vehicles", cars_path
 
-      .navbar.navbar-fixed-top.navbar-inverse{ class: ('offset-dev-warning-top' if Rails.env.development?) }
-        .navbar-inner
-          .container
-            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            = link_to 'doored.ca', root_path, class: 'brand'
-            .container.nav-collapse
-              %ul.nav
-                %li= link_to "Report Incident", new_incident_path
-                %li= link_to "Recorded Incidents", root_path
-                %li= link_to "Recorded Vehicles", cars_path
+      .yellow-stripe
+        .container
+          - if Rails.env.development?
+            .dev-warning
+              %i.icon-warning-sign
+              %strong Hey there!
+              This is the development server. Users can test new features and provide feedback to the developers. Just so you know, things can break here!
+
+
+      / .navbar.navbar-fixed-top.navbar-inverse{ class: ('offset-dev-warning-top' if Rails.env.development?) }
+      /   .navbar-inner
+      /     .container
+      /       %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+      /         %span.icon-bar
+      /         %span.icon-bar
+      /         %span.icon-bar
+      /       = link_to 'doored.ca', root_path, class: 'brand'
+      /       .container.nav-collapse
+      /         %ul.nav
+      /           %li= link_to "Report Incident", new_incident_path
+      /           %li= link_to "Recorded Incidents", root_path
+      /           %li= link_to "Recorded Vehicles", cars_path
 
       .container.app-container
         .row
