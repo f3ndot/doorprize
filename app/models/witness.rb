@@ -5,6 +5,10 @@ class Witness < ActiveRecord::Base
   validates :incident, presence: true, on: :update
   validates :name, presence: true
 
+  def to_s
+    name
+  end
+
   def name
     if privacy_level == Witness.privacy_levels[:private]
       '(Withheld)'
@@ -23,6 +27,14 @@ class Witness < ActiveRecord::Base
 
   def self.privacy_levels
     {public: 0, private: 1}
+  end
+
+  def private?
+    privacy_level === Witness.privacy_levels[:private]
+  end
+
+  def public?
+    not private?
   end
 
   def privacy

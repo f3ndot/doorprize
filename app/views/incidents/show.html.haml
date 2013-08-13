@@ -38,6 +38,17 @@
     %br
     = link_to @incident.car, car_path(@incident.car)
 
+- @incident.witnesses.each do |witness|
+  %p
+    %strong Witness:
+    %br
+    - if witness.private?
+      %i.icon-lock
+      = witness
+      %a{ href: '#', rel: 'tooltip' , title: 'witness details withheld for privacy their privacy' } why?
+    - else
+      = link_to witness, witness_path(witness)
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), incidents_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_incident_path(@incident), :class => 'btn'
