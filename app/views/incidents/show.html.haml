@@ -10,6 +10,7 @@
   %strong= model_class.human_attribute_name(:datetime_of_incident) + ':'
   %br
   = @incident.datetime_of_incident
+  %span.muted= "(#{time_ago_in_words @incident.datetime_of_incident, include_seconds: true} ago)"
 %p
   %strong= model_class.human_attribute_name(:location) + ':'
   %br

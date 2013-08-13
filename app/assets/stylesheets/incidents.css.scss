@@ -1,3 +1,12 @@
 // Place all the styles related to the incidents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.severity-link, a.date-link {
+  color: #333;
+  border-bottom: 1px dotted #999;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+}
