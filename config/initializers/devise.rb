@@ -247,7 +247,7 @@ Devise.setup do |config|
   if Rails.env.production?
     config.mailer.default_url_options = { :host => "www.doored.ca" }
   elsif Rails.env.staging?
-    config.mailer.default_url_options = { :host => "dev.doored.ca" }
+    #config.mailer.default_url_options = { :host => "dev.doored.ca" }
   else
     config.mailer.default_url_options = { :host => "localhost:3000" }
   end
