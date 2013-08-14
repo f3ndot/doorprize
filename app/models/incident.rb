@@ -12,6 +12,7 @@ class Incident < ActiveRecord::Base
   validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
   validate :validate_datetime_of_incident
 
+  # TODO test the ever-living crap out of :by_user scope
   scope :by_user, -> (user_id) { where 'user_id = ?', user_id }
   scope :latest_incidents, -> { order 'datetime_of_incident DESC' }
   scope :oldest_incidents, -> { order 'datetime_of_incident ASC' }
