@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
     str << "?s=#{size}" if size.present? && size.is_a?(Integer) && size.between?(0,512)
     return str
   end
+
+  has_many :incidents
 end
