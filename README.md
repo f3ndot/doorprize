@@ -57,6 +57,15 @@ Developer Collaboration
    export DOORED_DEVISE_PEPPER=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef
    ```
 
+   The following environment variables are expected in staging and production:
+
+   ```bash
+   DOORED_SECRET_TOKEN_KEY
+   DOORED_DEVISE_PEPPER
+   SENDGRID_USERNAME
+   SENDGRID_PASSWORD
+   ```
+
 4. Load the database:
 
    ```
