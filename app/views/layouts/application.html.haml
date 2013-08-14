@@ -21,14 +21,48 @@
     .container-wrapper
 
       = nav_bar static: :top, brand: 'doored.ca', brand_link: root_path, inverse: true, responsive: true do
-        - menu_group do
+        = menu_group do
           = menu_item "Report Incident", new_incident_path
           = menu_item "Recorded Incidents", incidents_path
           = menu_item "Recorded Vehicles", cars_path
+        = menu_group pull: :right do
+          - if user_signed_in?
+            = menu_item "Edit Account", edit_user_registration_path, class: 'hidden-desktop'
+            = menu_item "Log Out", destroy_user_session_path, method: :delete, class: 'hidden-desktop'
+            %li.dropdown.visible-desktop
+              %a.dropdown-toggle.account-toggle{ href: '#', data: { toggle: 'dropdown' } }
+                %img{ src: current_user.gravatar(22), title: current_user.email, alt: current_user.email }
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to '#' do
+                    %strong #{current_user.email}
+                %li
+                  = link_to edit_user_registration_path do
+                    %i.icon-cog
+                    Edit Account
+                %li
+                  = link_to destroy_user_session_path, method: :delete do
+                    %i.icon-signout
+                    Log Out
+          - else
+            = menu_item "Sign up", new_user_registration_path
+            = menu_divider
+            = menu_item "Sign in", new_user_session_path, class: 'hidden-desktop'
+            %li.dropdown.visible-desktop
+              %a#login-nav-dropdown.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
+                Sign in
+                %b.caret
+              .dropdown-menu{ style: 'padding: 15px' }
+                = simple_form_for User.new(), url: user_session_path, html: { class: 'navbar-form' } do |f|
+                  = f.input :email, placeholder: 'Email', label: false
+                  = f.input :password, placeholder: 'Password', label: false
+                  = f.input :remember_me, :as => :boolean, label: false, inline_label: 'Remember me'
+                  = f.button :submit, 'Login!', class: 'btn btn-primary btn-block'
 
       .yellow-stripe
         .container
-          - if Rails.env.development?
+          - if Rails.env.development? || Rails.env.staging?
             .dev-warning
               %i.icon-warning-sign
               %strong Hey there!
@@ -51,17 +85,9 @@
 
       .container.app-container
         .row
-          .span12
+          .span12.bootstrap-flashes
             = bootstrap_flash
-            = yield
-          / .span3
-          /   .well.sidebar-nav
-          /     %h3 Sidebar
-          /     %ul.nav.nav-list
-          /       %li.nav-header Sidebar
-          /       %li= link_to "Link 1", "/path1"
-          /       %li= link_to "Link 2", "/path2"
-          /       %li= link_to "Link 3", "/path3"
+        = yield
 
     %footer.footer
       .container

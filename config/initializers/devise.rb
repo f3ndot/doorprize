@@ -243,4 +243,12 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  if Rails.env.production?
+    config.mailer.default_url_options = { :host => "www.doored.ca" }
+  elsif Rails.env.staging?
+    config.mailer.default_url_options = { :host => "dev.doored.ca" }
+  else
+    config.mailer.default_url_options = { :host => "localhost:3000" }
+  end
 end
