@@ -9,36 +9,45 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.json
   def index
-    safe_params = params.permit :sort, :page
+    safe_params = params.permit :sort, :page, :user
     @sortable_words = {latest: 'Latest incidents', oldest: 'Oldest incidents', latest_submitted: 'Newest submissions', oldest_submitted: 'Oldest submissions', most_severe: 'Most severe', least_severe: 'Least severe'}
 
     case safe_params[:sort]
     when 'latest', 'newest'
-      incidents = Incident.latest_incidents.page safe_params[:page]
+      incidents = Incident.latest_incidents
       sorted_by = 'Latest incidents'
     when 'oldest'
-      incidents = Incident.oldest_incidents.page safe_params[:page]
+      incidents = Incident.oldest_incidents
       sorted_by = 'Oldest incidents'
     when 'latest-submitted', 'newest-submitted'
-      incidents = Incident.latest_submitted.page safe_params[:page]
+      incidents = Incident.latest_submitted
       sorted_by = 'Newest submissions'
     when 'oldest-submitted'
-      incidents = Incident.oldest_submitted.page safe_params[:page]
+      incidents = Incident.oldest_submitted
       sorted_by = 'Oldest submissions'
     when 'most-severe'
-      incidents = Incident.most_severe.page safe_params[:page]
+      incidents = Incident.most_severe
       sorted_by = 'Most severe'
     when 'least-severe'
-      incidents = Incident.least_severe.page safe_params[:page]
+      incidents = Incident.least_severe
+      sorted_by = 'Least severe'
+    when 'least-severe'
+      incidents = Incident.least_severe
       sorted_by = 'Least severe'
     else
       redirect_to incidents_path if safe_params[:sort].present?
       sorted_by = 'Latest incidents'
-      incidents = Incident.latest_incidents.page safe_params[:page]
+      incidents = Incident.latest_incidents
     end
 
-      @sorted_by = sorted_by
-      @incidents = incidents
+    if safe_params[:user].present?
+      user = User.find(safe_params[:user])
+      sorted_by << " by #{user.email}"
+      incidents = incidents.by_user user
+    end
+
+    @sorted_by = sorted_by
+    @incidents = incidents.page safe_params[:page]
   end
 
   # GET /incidents/1
@@ -61,6 +70,7 @@ class IncidentsController < ApplicationController
   # POST /incidents.json
   def create
     @incident = Incident.new(incident_params)
+    @incident.user = current_user if user_signed_in?
 
     respond_to do |format|
       if @incident.save

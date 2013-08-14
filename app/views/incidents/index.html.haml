@@ -9,7 +9,10 @@
   %ul.dropdown-menu{ role: 'menu', aria: { labelledby: 'dLabel' } }
     - @sortable_words.each do |key,val|
       - if val != @sorted_by
-        %li{ role: 'presentation' }= link_to val, sorted_incidents_path(key.to_s.tr('_', '-'))
+        - if params[:user].present?
+          %li{ role: 'presentation' }= link_to val, byuser_sorted_incidents_path(key.to_s.tr('_', '-'), params[:user])
+        - else
+          %li{ role: 'presentation' }= link_to val, sorted_incidents_path(key.to_s.tr('_', '-'))
 %table.table.table-striped
   %thead
     %tr
