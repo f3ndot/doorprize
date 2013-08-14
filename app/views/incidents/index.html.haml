@@ -1,6 +1,11 @@
 - model_class = Incident
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  %h1
+    Recorded Incidents
+  - if params[:user].present?
+    %h2.lead
+      submitted by
+      = User.find(params[:user]).email
 .dropdown.pull-right
   %a.btn.btn-small.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
     %i.icon-sort

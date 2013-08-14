@@ -77,6 +77,7 @@ class IncidentsController < ApplicationController
         format.html { redirect_to @incident, notice: 'Incident was successfully created.' }
         format.json { render action: 'show', status: :created, location: @incident }
       else
+        @incident.build_car if @incident.car.nil?
         format.html { render action: 'new' }
         format.json { render json: @incident.errors, status: :unprocessable_entity }
       end
