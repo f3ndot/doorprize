@@ -53,7 +53,8 @@ Developer Collaboration
 3. Export the required environment variables:
 
    ```bash
-   export DOORED_SECRET_TOKEN_KEY=deadbeef8fb5ed059521cbe0ef13c844c7bf5f94d5d1ad051c349d87dab2ec07   3951619db6aac20438cc5e884c6b7e20758ef672343bf02411e99c229c4fd480
+   export DOORED_SECRET_TOKEN_KEY=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef
+   export DOORED_DEVISE_PEPPER=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef
    ```
 
 4. Load the database:
