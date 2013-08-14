@@ -34,7 +34,7 @@ class IncidentsController < ApplicationController
     else
       redirect_to incidents_path if safe_params[:sort].present?
       sorted_by = 'Latest incidents'
-      incidents = Incident.all.page safe_params[:page]
+      incidents = Incident.latest_incidents.page safe_params[:page]
     end
 
       @sorted_by = sorted_by
