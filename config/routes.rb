@@ -1,4 +1,5 @@
 Doorprize::Application.routes.draw do
+  devise_for :users
   resources :witnesses
 
   resources :cars
