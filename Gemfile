@@ -14,6 +14,7 @@ gem 'sass-rails', '~> 4.0.0'
 # Use bootstrap
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-datetimepicker-rails'
 
 # Heroku plugin
 gem 'rails_12factor', group: :production
