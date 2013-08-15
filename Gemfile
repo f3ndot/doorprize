@@ -18,6 +18,9 @@ gem 'twitter-bootstrap-rails'
 # Heroku plugin
 gem 'rails_12factor', group: :production
 
+# Detect browser timezone and set cookie
+gem 'browser-timezone-rails'
+
 # Use a DSL so forms don't suck
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'cocoon', '1.2.0'
