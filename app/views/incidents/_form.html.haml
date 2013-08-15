@@ -1,6 +1,33 @@
 = simple_form_for @incident, html: { class: 'form-horizontal' } do |f|
   = f.error_notification
 
+  - if not user_signed_in?
+    .alert.alert-block.alert-error
+      %p.lead
+        %i.icon-info-sign
+        You're about to fill out an incident report
+        %em anonymously
+      %p
+        %strong
+          Submitting a report anonymously
+          %em significantly
+          reduces its legitimacy score.
+
+      %p
+        Please take the 2 seconds to
+        = link_to 'sign up', new_user_registration_path, class: 'btn btn-small btn-primary'
+        or login with
+        = link_to '#', class: 'btn btn-small' do
+          %i.icon-twitter
+          Twitter
+        = link_to '#', class: 'btn btn-small' do
+          %i.icon-google-plus
+          Google Account
+        or
+        = link_to '#', class: 'btn btn-small' do
+          %i.icon-github
+          GitHub
+
   .form-inputs
     = f.input :description
     = f.input :datetime_of_incident, as: :datetime_picker
@@ -21,6 +48,12 @@
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
+    - if user_signed_in?
+      .reporting-as-user.pull-right
+        Reporting incident as
+        %strong
+          %img.img-rounded{ src: current_user.gravatar(32) }
+          = current_user.email
 
 .severity-levels{style: 'display:none'}
   - for i in 0..10

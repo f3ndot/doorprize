@@ -1,4 +1,5 @@
 Doorprize::Application.routes.draw do
+  devise_for :users
   resources :witnesses
 
   resources :cars
@@ -6,6 +7,7 @@ Doorprize::Application.routes.draw do
   resources :incidents do
     collection do
       get 'sort/:sort', to: 'incidents#index', as: :sorted
+      get 'sort/:sort/:user', to: 'incidents#index', as: :byuser_sorted
     end
   end
 

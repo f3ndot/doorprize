@@ -58,6 +58,10 @@ gem 'thin'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+# Accounts and stuff
+gem 'devise'
+gem 'cancan'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

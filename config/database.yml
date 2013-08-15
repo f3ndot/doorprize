@@ -18,6 +18,12 @@ test:
   pool: 5
   timeout: 5000
 
+staging:
+  adapter: pg
+  database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
+
 production:
   adapter: pg
   database: db/production.sqlite3
