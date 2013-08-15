@@ -18,6 +18,10 @@ gem 'twitter-bootstrap-rails'
 # Heroku plugin
 gem 'rails_12factor', group: :production
 
+# New relic for heroku
+gem 'newrelic_rpm', group: :production
+gem 'newrelic_rpm', group: :staging
+
 # Detect browser timezone and set cookie
 gem 'browser-timezone-rails'
 
