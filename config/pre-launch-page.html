@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/prelaunch/stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="/prelaunch/stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="/prelaunch/stylesheets/print.css" media="print" />
+    <link rel="stylesheet" href="/prelaunch/fonts/stylesheet.css" />
 
     <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
     <style type="text/css">
@@ -16,6 +17,85 @@
       #mc_embed_signup input.button {margin-left: auto; margin-right: auto;}
       #mc_embed_signup .button {background-color:#3498db;}
       #mc_embed_signup .button:hover {background-color:#5dade2;}
+
+      /* ---- Counter ---- */
+
+      #counter {
+        line-height: 1;
+        width: 620px;
+        height: 145px;
+        margin: 0 auto;
+        font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+        font-size: 92px;
+        color: #272727;
+        text-shadow: 0 1px 0 #fff;
+        overflow: hidden;
+      }
+
+      .countDays, .countHours, .countMinutes, .countSeconds {
+        float: left;
+        width: 96px;
+        height: 138px;
+        padding-left: 27px;
+        background: #e7e7e7;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.1)), to(rgba(0,0,0,.07)));
+        background-image: -webkit-linear-gradient(top, rgba(255,255,255,.1), rgba(0,0,0,.07));
+        background-image: -moz-linear-gradient(top, rgba(255,255,255,.1), rgba(0,0,0,.07));
+        background-image: -ms-linear-gradient(top, rgba(255,255,255,.1), rgba(0,0,0,.07));
+        background-image: -o-linear-gradient(top, rgba(255,255,255,.1), rgba(0,0,0,.07));
+        background-image: linear-gradient(top, rgba(255,255,255,.1), rgba(0,0,0,.07));
+        border: 1px solid #ccc;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        -moz-box-shadow:
+          0 2px 3px 0 rgba(255,255,255,.2) inset,
+          0 2px 2px 0 rgba(0,0,0,.1);
+        -webkit-box-shadow:
+          0 2px 3px 0 rgba(255,255,255,.2) inset,
+          0 2px 2px 0 rgba(0,0,0,.1);
+        box-shadow:
+          0 2px 3px 0 rgba(255,255,255,.2) inset,
+          0 2px 2px 0 rgba(0,0,0,.1);
+      }
+
+      .points {
+        float: left;
+        width: 40px;
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: 44px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 138px;
+        text-shadow: none;
+      }
+
+      .position {
+        position: relative;
+        float: left;
+        width: 35px;
+        height: 92px;
+        margin: 8px 0 0 0;
+      }
+
+      .digit {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .boxName {
+        float: left;
+        width: 80px;
+        margin: -5px 0 0 7px;
+        font-size: 36px;
+        color: #a6a6a6;
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+      }
+
+      .Hours { margin-left: 5px; }
+      .Seconds { margin-left: 2px; }
     </style>
 
 
@@ -36,6 +116,11 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         </header>
 
+
+        <section id="main_content">
+
+<div id="counter" class="countdownHolder"></div>
+<hr>
 <!-- Begin MailChimp Signup Form -->
 <div id="mc_embed_signup">
 <form action="http://justinbull.us5.list-manage.com/subscribe/post?u=5bbbc8695894234b7005c59a7&amp;id=879d0fa744" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -46,10 +131,9 @@
 </div>
 
 <!--End mc_embed_signup-->
+<hr>
 
-        <hr>
 
-        <section id="main_content">
           <h1>
 <a name="what-is-this-page" class="anchor" href="#what-is-this-page"><span class="octicon octicon-link"></span></a>What is this page?</h1>
 
@@ -65,13 +149,6 @@
 <p>Because despite the fact that the Police board wants Toronto cops to review the policy, It'll take the Toronto Police <strong>3 months to respond</strong>.<a href="#foot-3"><sup>[3]</sup></a> I can build a reporting database application in just 1/6 of that time.</p>
 
 <p>Because I feel it's important to track and record something that's an issue in this community. By not tracking these incidents, how can we even begin to adequately address the issue?</p>
-
-<h2>
-<a name="when" class="anchor" href="#when"><span class="octicon octicon-link"></span></a>When!?</h2>
-
-<p>You can watch me develop the source code for the website application on <a href="https://www.github.com/f3ndot/doorprize">GitHub</a>.</p>
-
-<p style="text-align: center;"><strong>I aim to have the site live by August 21st, 2013.</strong></p>
 
 
 <h2 style="margin-top:20px">Hey Justin, I have an idea!</h2>
@@ -146,6 +223,25 @@
           Doorprize is maintained by <a href="https://github.com/f3ndot">f3ndot</a><br>
           Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="/prelaunch/countdown/jquery.countdown.js"></script>
+<script>
+
+
+$(function(){
+
+  $('#counter').countdown({
+    timestamp : (new Date("August 21, 2013 00:00:00 -04:00")).getTime(),
+    callback : function(d, h, m, s) {
+      if(d == 0 && h == 0 && m == 0 && s == 0) {
+        location.reload();
+      }
+    }
+  });
+
+});
+
+</script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
