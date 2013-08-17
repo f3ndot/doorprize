@@ -5,18 +5,6 @@ class IncidentsControllerTest < ActionController::TestCase
     @incident = incidents(:one)
   end
 
-  # Not sure where this should go. It only cares about application layout
-  test "should render development warning banner" do
-    get :index
-    assert_template layout: "layouts/application"
-    assert_select 'div.dev-warning', false
-
-    Rails.env = 'development'
-    get :index
-    assert_template layout: "layouts/application"
-    assert_select 'div.dev-warning'
-  end
-
   test "should get index" do
     get :index
     assert_response :success

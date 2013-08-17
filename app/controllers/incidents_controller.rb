@@ -1,11 +1,6 @@
 class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
 
-  def robots
-    robots = File.read(Rails.root + "config/robots.#{Rails.env}.txt")
-    render text: robots, layout: false, content_type: "text/plain"
-  end
-
   # GET /incidents
   # GET /incidents.json
   def index
