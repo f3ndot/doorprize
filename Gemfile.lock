@@ -31,6 +31,9 @@ GEM
     bootstrap-kaminari-views (0.0.2)
       kaminari (>= 0.13)
       rails (>= 3.1)
+    browser-timezone-rails (0.0.6)
+      jquery-rails
+      rails (>= 3.1)
     builder (3.1.4)
     cancan (1.6.10)
     cocoon (1.2.0)
@@ -83,6 +86,7 @@ GEM
     mime-types (1.23)
     minitest (4.7.5)
     multi_json (1.7.8)
+    newrelic_rpm (3.6.6.147)
     orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -164,6 +168,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-kaminari-views
+  browser-timezone-rails
   cancan
   cocoon (= 1.2.0)
   coffee-rails (~> 4.0.0)
@@ -173,6 +178,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   less-rails
+  newrelic_rpm
   pg
   rails (= 4.0.0)
   rails_12factor

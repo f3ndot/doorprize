@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require cocoon
+//= require browser_timezone_rails/application.js
+//= require bootstrap-datetimepicker.min.js
 //= require_tree .
