@@ -66,6 +66,9 @@ gem 'bootstrap-kaminari-views'
 gem 'devise'
 gem 'cancan'
 
+# Allow mocking and stubbing in tests
+gem 'mocha', require: false
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

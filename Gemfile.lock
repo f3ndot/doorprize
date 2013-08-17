@@ -83,8 +83,11 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     mime-types (1.23)
     minitest (4.7.5)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
     multi_json (1.7.8)
     newrelic_rpm (3.6.6.147)
     orm_adapter (0.4.0)
@@ -178,6 +181,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   less-rails
+  mocha
   newrelic_rpm
   pg
   rails (= 4.0.0)

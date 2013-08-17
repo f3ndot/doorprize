@@ -17,3 +17,5 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
+
+require 'mocha/setup'

@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
   end
 
   def launched?
-    Time.now > Time.new(2013, 8, 21)
+    # The morning of August 21st in Toronto (Eastern Time)
+    Time.now >= Time.new(2013, 8, 21, 0, 0, 0, '-04:00')
   end
 
 end

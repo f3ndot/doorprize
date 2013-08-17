@@ -5,9 +5,22 @@ class ApplicationControllerTest < ActionController::TestCase
 
     @controller = IncidentsController.new
 
-    Rails.env = 'production'
-    get :index
-    assert_select 'body.prelaunch'
+    [Time.new(2013, 8, 20, 23, 59, 59, '-04:00'), Time.new(2013, 8, 20, 0, 0, 0, '-04:00')].each do |time|
+      Time.stubs(:now).returns time
+
+      Rails.env = 'production'
+      get :index
+      assert_select 'body.prelaunch'
+    end
+
+    [Time.new(2013, 8, 21, 0, 0, 0, '-04:00'), Time.new(2013, 8, 22, 0, 0, 0, '-04:00')].each do |time|
+      Time.stubs(:now).returns time
+
+      Rails.env = 'production'
+      get :index
+      assert_select 'body.prelaunch', false
+    end
+
 
     ['development', 'staging', 'test'].each do |env|
       Rails.env = env
