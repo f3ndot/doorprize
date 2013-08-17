@@ -245,8 +245,10 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
   if Rails.env.production?
-    config.mailer.default_url_options = { :host => "www.doored.ca" }
+    # defined in production.rb
+    #config.mailer.default_url_options = { :host => "www.doored.ca" }
   elsif Rails.env.staging?
+    # defined in staging.rb
     #config.mailer.default_url_options = { :host => "dev.doored.ca" }
   else
     config.mailer.default_url_options = { :host => "localhost:3000" }
