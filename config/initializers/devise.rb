@@ -219,7 +219,15 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  if Rails.env.production?
+    config.omniauth :github, '7acfd37dd48d68fe301e', ENV['GITHUB_OAUTH_SECRET'], :scope => 'user:email'
+    config.omniauth :twitter, 'tMXGQsVWD5AcJAc0RBRpw', ENV['TWITTER_OAUTH_SECRET']
+    config.omniauth :google_oauth2, '464921071138.apps.googleusercontent.com', ENV['GOOGLE_OAUTH_SECRET']
+  else
+    config.omniauth :github, '019a9b1b875764ba1e8f', ENV['GITHUB_OAUTH_SECRET'], :scope => 'user:email'
+    config.omniauth :twitter, 'n3c1NOY5pWXMyj5ppSEJiQ', ENV['TWITTER_OAUTH_SECRET']
+    config.omniauth :google_oauth2, '226908308713.apps.googleusercontent.com', ENV['GOOGLE_OAUTH_SECRET']
+  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
