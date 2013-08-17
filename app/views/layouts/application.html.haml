@@ -59,6 +59,17 @@
                 Sign in
                 %b.caret
               .dropdown-menu{ style: 'padding: 15px' }
+                = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-block' do
+                  %i.icon-twitter
+                  Twitter
+                = link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-block' do
+                  %i.icon-google-plus
+                  Google
+                = link_to user_omniauth_authorize_path(:github), class: 'btn btn-block' do
+                  %i.icon-github
+                  GitHub
+
+                %hr
                 = simple_form_for User.new(), url: user_session_path, html: { class: 'navbar-form' } do |f|
                   = f.input :email, placeholder: 'Email', label: false
                   = f.input :password, placeholder: 'Password', label: false

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable
+         :lockable, :omniauthable, :omniauth_providers => [:google_oauth2, :twitter, :github]
 
   def gravatar(size=nil)
     str = "http://www.gravatar.com/avatar/" << Digest::MD5.hexdigest(email.downcase)

@@ -17,14 +17,14 @@
         Please take the 2 seconds to
         = link_to 'sign up', new_user_registration_path, class: 'btn btn-small btn-primary'
         or login with
-        = link_to '#', class: 'btn btn-small' do
+        = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-small' do
           %i.icon-twitter
           Twitter
-        = link_to '#', class: 'btn btn-small' do
+        = link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-small' do
           %i.icon-google-plus
           Google Account
         or
-        = link_to '#', class: 'btn btn-small' do
+        = link_to user_omniauth_authorize_path(:github), class: 'btn btn-small' do
           %i.icon-github
           GitHub
 
