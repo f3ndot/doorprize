@@ -5,7 +5,7 @@
   - if params[:user].present?
     %h2.lead
       submitted by
-      = User.find(params[:user]).email
+      = User.find(params[:user]).name
 .dropdown.pull-right
   %a.btn.btn-small.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
     %i.icon-sort
