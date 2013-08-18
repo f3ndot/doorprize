@@ -12,6 +12,7 @@ class Incident < ActiveRecord::Base
   MAX_SCORE = 6
 
   validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
+  validates :datetime_of_incident, presence: true
   validates :description, presence: true
   validates :location, presence: true
   validate :validate_datetime_of_incident
@@ -104,8 +105,7 @@ class Incident < ActiveRecord::Base
   protected
 
   def validate_datetime_of_incident
-    errors.add(:datetime_of_incident, "can't be in the future") if datetime_of_incident.future?
-    errors.add(:datetime_of_incident, "can't be blank") if datetime_of_incident.blank?
+    errors.add(:datetime_of_incident, "can't be in the future") if datetime_of_incident.present? && datetime_of_incident.future?
   end
 
   def calculate_score

@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :display_prelaunch_if_too_soon, except: [:robots, :privacy, :terms]
+  # Short term fix for cancan 1.6.10 and rails 4.0.0 strong params problem
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
 
   rescue_from CanCan::AccessDenied do |exception|
     alert_message = "<i class='icon-minus-sign'></i> <strong>Access Denied.</strong> ".html_safe
