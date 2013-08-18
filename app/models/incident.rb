@@ -9,6 +9,8 @@ class Incident < ActiveRecord::Base
   MIN_SEVERITY = 0
   MAX_SEVERITY = 10
 
+  MAX_SCORE = 6
+
   validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
   validate :validate_datetime_of_incident
 
@@ -21,12 +23,23 @@ class Incident < ActiveRecord::Base
   scope :most_severe, -> { order 'severity DESC' }
   scope :least_severe, -> { order 'severity ASC' }
 
+  before_save :calculate_score
+
   def to_s
     "Incident No. \##{id} - Date: #{datetime_of_incident} - Severity Level #{severity}"
   end
 
   def short_name
     "No. \##{id}"
+  end
+
+  def score
+    return score_override if score_override.present?
+    read_attribute :score
+  end
+
+  def score_percent
+    ((score / MAX_SCORE.to_f) * 100).round.to_s << '%'
   end
 
   # TODO This is a dependency code-smell. Move into Car model
@@ -88,6 +101,30 @@ class Incident < ActiveRecord::Base
   def validate_datetime_of_incident
     errors.add(:datetime_of_incident, "can't be in the future") if datetime_of_incident.future?
     errors.add(:datetime_of_incident, "can't be blank") if datetime_of_incident.blank?
+  end
+
+  def calculate_score
+    score = 0
+    score += 1 if user.present?
+    score -= 1 if user.blank?
+    if car.present?
+      score += 1 if car.license_plate.present?
+      score += 1 if car.driver_name.present?
+      score += 1 if car.driver_contact.present?
+    end
+    if witnesses.count > 0
+      witness_score = false
+      witnesses.each do |w|
+        if w.name.present? && w.contact.present?
+          witness_score = true
+        end
+      end
+      score += 1 if witness_score
+    end
+    score += 3 if video.present?
+    score += 1 if police_report_number.present?
+
+    write_attribute :score, score
   end
 
 end

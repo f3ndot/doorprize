@@ -44,12 +44,13 @@
       %th
         %i.icon-calendar
         Incident Occured
+      / %th
+      /   %i.icon-folder-open
+      /   Submitted
       %th
-        %i.icon-folder-open
-        Submitted
-      %th
-        %i.icon-user
-        Submitter
+        Reliability
+        %a{href: '#', rel: 'scorepopover', data: {title: 'What is a legitimacy score?', content: legitimacy_score_popover_text}}
+          %i.icon-question-sign
       %th{style: 'text-align:center'}
         %i.icon-wrench{title: 'Actions', rel: 'tooltip'}
   %tbody
@@ -87,15 +88,24 @@
           %a.date-link{ rel: 'tooltip', title: l(incident.datetime_of_incident) }
             = time_ago_in_words incident.datetime_of_incident, include_seconds: true
             ago
+        / %td
+        /   %a.date-link{ rel: 'tooltip', title: l(incident.created_at) }
+        /     = time_ago_in_words incident.created_at, include_seconds: true
+        /     ago
         %td
-          %a.date-link{ rel: 'tooltip', title: l(incident.created_at) }
-            = time_ago_in_words incident.created_at, include_seconds: true
-            ago
-        %td
-          - if incident.user.blank?
-            %em.muted Anonymous
+          - if incident.score_override.present?
+            %i.icon-ok{title: 'Manually verified by moderators', rel: 'tooltip', style: 'color: #16a085; border-bottom: 1px #333 dotted;'}
           - else
-            = link_to incident.user.name, byuser_sorted_incidents_path('latest', incident.user.id)
+            - if incident.score <= 2
+              %i.icon-frown
+            - elsif incident.score <= 4
+              %i.icon-meh
+            - else incident.score
+              %i.icon-smile
+          - if incident.score > 4
+            %strong= incident.score_percent
+          - else
+            = incident.score_percent
         %td
           - if incident.user.present? && incident.user == current_user
             = link_to glyph(:pencil), edit_incident_path(incident), :class => 'btn btn-mini', :rel => 'tooltip', :title => 'Edit'
