@@ -4,12 +4,24 @@
 %table.table.table-striped
   %thead
     %tr
-      %th Assoc. Incident
-      %th= model_class.human_attribute_name(:make)
-      %th= model_class.human_attribute_name(:color)
-      %th= model_class.human_attribute_name(:license_plate)
-      %th= model_class.human_attribute_name(:driver_name)
-      %th Details
+      %th
+        %i.icon-exclamation
+        Assoc. Incident
+      %th
+        %i.icon-truck
+        Make
+      %th
+        %i.icon-tint
+        Colour
+      %th
+        %i.icon-barcode
+        Licence plate
+      %th
+        %i.icon-user
+        Driver
+      %th
+        %i.icon-info
+        Details
   %tbody
     - @cars.each do |car|
       %tr

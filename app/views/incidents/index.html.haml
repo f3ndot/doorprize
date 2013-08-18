@@ -21,16 +21,37 @@
 %table.table.table-striped
   %thead
     %tr
-      %th ID Number
-      %th= model_class.human_attribute_name(:severity)
-      %th= model_class.human_attribute_name(:location)
-      %th= model_class.human_attribute_name(:police_report_number)
-      %th= model_class.human_attribute_name(:video)
-      %th Vehicle
-      %th Witnesses
-      %th= model_class.human_attribute_name(:datetime_of_incident)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
+      %th
+        ID Number
+      %th
+        %i.icon-medkit
+        Severity
+      %th
+        %i.icon-location-arrow
+        Location
+      %th
+        %i.icon-briefcase
+        Police Report
+      %th
+        %i.icon-facetime-video
+        Video
+      %th
+        %i.icon-truck
+        Vehicle
+      %th
+        %i.icon-group
+        Witnesses
+      %th
+        %i.icon-calendar
+        Incident Occured
+      %th
+        %i.icon-folder-open
+        Submitted
+      %th
+        %i.icon-user
+        Submitter
+      %th{style: 'text-align:center'}
+        %i.icon-wrench{title: 'Actions', rel: 'tooltip'}
   %tbody
     - @incidents.each do |incident|
       %tr
@@ -41,7 +62,11 @@
             - if incident.severity == 10
               %i.icon-exclamation-sign
         %td= incident.location
-        %td= incident.police_report_number
+        %td
+          - if incident.police_report_number.present?
+            = link_to 'Yes', '#', class: 'date-link', title: incident.police_report_number, rel: 'tooltip'
+          - else
+            No
         %td
           - if incident.video.present?
             = link_to incident.video, rel: 'tooltip', title: 'External link' do
@@ -67,8 +92,14 @@
             = time_ago_in_words incident.created_at, include_seconds: true
             ago
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_incident_path(incident), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), incident_path(incident), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          - if incident.user.blank?
+            %em.muted Anonymous
+          - else
+            = link_to incident.user.name, byuser_sorted_incidents_path('latest', incident.user.id)
+        %td
+          - if incident.user.present? && incident.user == current_user
+            = link_to glyph(:pencil), edit_incident_path(incident), :class => 'btn btn-mini', :rel => 'tooltip', :title => 'Edit'
+            = link_to glyph(:trash), incident_path(incident), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger', :rel => 'tooltip', :title => 'Edit'
 
 .row
   .span12
@@ -77,4 +108,6 @@
   .span12
     .pagination-foot{style: 'text-align: center'}= paginate @incidents, theme: 'twitter-bootstrap'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_incident_path, :class => 'btn btn-primary'
+= link_to new_incident_path, :class => 'btn btn-primary' do
+  %i.icon-file-alt
+  Report new incident

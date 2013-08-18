@@ -49,7 +49,9 @@
     = render 'witness_fields', f: witnesses
   .links.control-group
     .controls
-      = link_to_add_association 'Add a witness', f, :witnesses, class: 'btn btn-small'
+      = link_to_add_association f, :witnesses, class: 'btn btn-small' do
+        %i.icon-eye-open
+        Add a witness
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
