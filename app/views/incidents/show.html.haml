@@ -18,11 +18,17 @@
     %i.icon-question-sign
   %br
   - if @incident.score_override.present?
+    .progress.progress-striped.progress-success{style: 'width:300px'}
+      .bar{style: "width: #{@incident.score_percent};"}
+        = @incident.score_percent
     .text-success
       %i.icon-ok
       This report has been manually verified by site volunteers and has been assigned a legitimacy score of
       %strong= @incident.score_percent
   - else
+    .progress{style: 'width:300px'}
+      .bar{style: "width: #{@incident.score_percent};"}
+        = @incident.score_percent
     This report has scored
     %strong= @incident.score
     points. Yielding a reliability of
