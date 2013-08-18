@@ -7,10 +7,33 @@
 one:
   email: one@example.com
   name: John Smith
-# column: value
-#
+  encrypted_password: $2a$10$0rr1KyEuqOwyCkM6ISTEPecYMclVHdbLqfDoRgu7Acu4Wu15V6mxO
+
 two:
   email: two@example.com
   name: Bob Bill
+  encrypted_password: $2a$10$KJfaIThkhw8Jhjasf57kjPIHSashFSfs3578Kkjhkh9744dhKgjgh
 
-#  column: value
+twitter:
+  email: twitter@example.com
+  name: Tweety Tweeterson
+  provider: twitter
+  uid: '21124253'
+
+github:
+  email: github@example.com
+  name: A. Git
+  provider: github
+  uid: '352335699'
+
+facebook:
+  email: facebook@example.com
+  name: Mark Zuckerburg
+  provider: facebook
+  uid: '1582662'
+
+google:
+  email: google@example.com
+  name: Googly Eyes
+  provider: google
+  uid: '80225672457'
