@@ -38,4 +38,19 @@ class IncidentTest < ActiveSupport::TestCase
     refute incident.valid?
   end
 
+  test "incident description is not blank" do
+    incident = incidents(:one)
+    assert incident.valid?
+
+    incident.description = ''
+    refute incident.valid?
+  end
+
+  test "incident location is not blank" do
+    incident = incidents(:one)
+    assert incident.valid?
+
+    incident.location = ''
+    refute incident.valid?
+  end
 end

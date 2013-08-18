@@ -12,6 +12,8 @@ class Incident < ActiveRecord::Base
   MAX_SCORE = 6
 
   validates :severity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: MIN_SEVERITY, less_than_or_equal_to: MAX_SEVERITY, message: "severity must be between #{MIN_SEVERITY} and #{MAX_SEVERITY}, inclusive" }
+  validates :description, presence: true
+  validates :location, presence: true
   validate :validate_datetime_of_incident
 
   # TODO test the ever-living crap out of :by_user scope
