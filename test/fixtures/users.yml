@@ -6,9 +6,11 @@
 #
 one:
   email: one@example.com
+  name: John Smith
 # column: value
 #
 two:
   email: two@example.com
+  name: Bob Bill
 
 #  column: value

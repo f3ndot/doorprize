@@ -1,5 +1,9 @@
 jQuery ->
   $("a[rel=popover]").popover()
+  $("a[rel=scorepopover]").popover
+    html: true
+    trigger: 'hover focus'
+    container: 'body'
   # $(".tooltip").tooltip()
   $("a[rel=tooltip], span[rel=tooltip]").tooltip()
   $(".required abbr").tooltip()

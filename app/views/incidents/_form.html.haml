@@ -11,8 +11,10 @@
         %strong
           Submitting a report anonymously
           %em significantly
-          reduces its legitimacy score.
-
+          reduces its
+          %a{href: '#', rel: 'scorepopover', data: {title: 'What is a legitimacy score?', content: legitimacy_score_popover_text}}
+            legitimacy score
+            %i.icon-question-sign
       %p
         Please take the 2 seconds to
         = link_to 'sign up', new_user_registration_path, class: 'btn btn-small btn-primary'
@@ -32,6 +34,17 @@
         = link_to user_omniauth_authorize_path(:github), class: 'btn btn-small' do
           %i.icon-github
           GitHub
+  - else
+    .alert.alert-block.alert-info
+      %p.lead
+        %i.icon-info-sign
+        Try to make your report as detailed as possible.
+      %p
+        The more information you provide, the higher the
+        %a{href: '#', rel: 'scorepopover', data: {title: 'What is a legitimacy score?', content: legitimacy_score_popover_text}}
+          %strong legitimacy score
+          %i.icon-question-sign
+        will be.
 
   .form-inputs
     = f.input :description

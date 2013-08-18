@@ -4,6 +4,7 @@ class CarsControllerTest < ActionController::TestCase
   setup do
     @car = cars(:volvo)
     @car.incident = incidents(:one)
+    @car.incident.user = users(:one)
   end
 
   # Commented out until I figure out how to load fixture associations

@@ -4,6 +4,7 @@ class WitnessesControllerTest < ActionController::TestCase
   setup do
     @witness = witnesses(:alice)
     @witness.incident = incidents(:one)
+    @witness.incident.user = users(:one)
   end
 
   test "should get index" do
