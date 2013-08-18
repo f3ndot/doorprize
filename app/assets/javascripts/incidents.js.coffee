@@ -19,9 +19,15 @@ jQuery ->
       $('.incident_severity .help-block').css 'font-weight', 'normal'
 
   if $('.geolocate').size() > 0
+    $geocodeModal = $('#geocodeModal')
+
+    $('#geocodeModal').on 'click', '.geocoded-address-choice', (e) ->
+      $locationInput = $('#incident_location')
+      $locationInput.val $(this).text()
+      $geocodeModal.modal 'hide'
+
     $('.get-location').on 'click', (e) ->
       $getLocationBtn = $(this)
-      $geocodeModal = $('#geocodeModal')
       if $getLocationBtn.data('populated') == true
         $geocodeModal.modal 'show'
         return
@@ -46,7 +52,7 @@ jQuery ->
               $geocodeModal.find('.address-count').text response.results.length
               for result in response.results
                 cleanText = $('<div/>').text(result.formatted_address).html()
-                $geocodeModal.find('.address-list').append '<li>'+cleanText+'</li>'
+                $geocodeModal.find('.address-list').append '<button class="btn btn-block geocoded-address-choice">'+cleanText+'</button>'
               $geocodeModal.modal 'show'
               $getLocationBtn.data 'populated', true
 
