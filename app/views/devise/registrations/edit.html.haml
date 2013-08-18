@@ -20,7 +20,7 @@
         Currently waiting confirmation for:
         = resource.unconfirmed_email
 
-    - if f.object.password_required?
+    - if f.object.provider.blank?
 
       = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
       = f.input :password_confirmation, :required => false
