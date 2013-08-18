@@ -12,9 +12,38 @@ class User < ActiveRecord::Base
     return str
   end
 
+  USER_LVL = 0
+  MOD_LVL = 1
+  ADMIN_LVL = 2
+
   has_many :incidents
 
   validates :name, presence: true
+
+  def admin?
+    read_attribute( :role )== ADMIN_LVL
+  end
+
+  def mod?
+    read_attribute( :role )== MOD_LVL
+  end
+
+  def user?
+    read_attribute( :role )== USER_LVL
+  end
+
+  def role
+    case read_attribute :role
+    when USER_LVL
+      'User'
+    when MOD_LVL
+      'Moderator'
+    when ADMIN_LVL
+      'Administrator'
+    else
+      'Unknown'
+    end
+  end
 
   def get_provider
     case provider

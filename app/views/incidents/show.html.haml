@@ -85,6 +85,11 @@
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), incidents_path, :class => 'btn'
-  - if @incident.user.present? && @incident.user == current_user
+  - if can? :update, @incident
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_incident_path(@incident), :class => 'btn'
+  - if can? :destroy, @incident
     = link_to t('.destroy', :default => t("helpers.links.destroy")), incident_path(@incident), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  - if can? :edit_override_score, @incident
+    = link_to edit_override_score_incident_path(@incident), :class => 'btn btn-info' do
+      %i.icon-star
+      Override legitimacy score

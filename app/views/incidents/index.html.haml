@@ -107,9 +107,10 @@
           - else
             = incident.score_percent
         %td
-          - if incident.user.present? && incident.user == current_user
+          - if can? :edit, incident
             = link_to glyph(:pencil), edit_incident_path(incident), :class => 'btn btn-mini', :rel => 'tooltip', :title => 'Edit'
-            = link_to glyph(:trash), incident_path(incident), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger', :rel => 'tooltip', :title => 'Edit'
+          - if can? :destroy, incident
+            = link_to glyph(:trash), incident_path(incident), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger', :rel => 'tooltip', :title => 'Delete'
 
 .row
   .span12
