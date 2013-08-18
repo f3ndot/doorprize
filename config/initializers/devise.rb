@@ -223,10 +223,12 @@ Devise.setup do |config|
     config.omniauth :github, '7acfd37dd48d68fe301e', ENV['GITHUB_OAUTH_SECRET'], :scope => 'user:email'
     config.omniauth :twitter, 'tMXGQsVWD5AcJAc0RBRpw', ENV['TWITTER_OAUTH_SECRET']
     config.omniauth :google_oauth2, '464921071138.apps.googleusercontent.com', ENV['GOOGLE_OAUTH_SECRET']
+    config.omniauth :facebook, '526613930743226', ENV['FACEBOOK_OAUTH_SECRET']
   else
     config.omniauth :github, '019a9b1b875764ba1e8f', ENV['GITHUB_OAUTH_SECRET'], :scope => 'user:email'
     config.omniauth :twitter, 'n3c1NOY5pWXMyj5ppSEJiQ', ENV['TWITTER_OAUTH_SECRET']
     config.omniauth :google_oauth2, '226908308713.apps.googleusercontent.com', ENV['GOOGLE_OAUTH_SECRET']
+    config.omniauth :facebook, '526613930743226', ENV['FACEBOOK_OAUTH_SECRET']
   end
 
   # ==> Warden configuration

@@ -107,6 +107,8 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
+    omniauth-facebook (1.4.1)
+      omniauth-oauth2 (~> 1.1.0)
     omniauth-github (1.1.1)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -216,6 +218,7 @@ DEPENDENCIES
   mocha
   newrelic_rpm
   omniauth
+  omniauth-facebook
   omniauth-github
   omniauth-google-oauth2
   omniauth-twitter

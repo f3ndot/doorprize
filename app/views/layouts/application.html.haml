@@ -59,12 +59,15 @@
                 Sign in
                 %b.caret
               .dropdown-menu{ style: 'padding: 15px' }
-                = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-block' do
-                  %i.icon-twitter
-                  Twitter
+                = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-block' do
+                  %i.icon-facebook-sign
+                  Facebook
                 = link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-block' do
                   %i.icon-google-plus
                   Google
+                = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-block' do
+                  %i.icon-twitter
+                  Twitter
                 = link_to user_omniauth_authorize_path(:github), class: 'btn btn-block' do
                   %i.icon-github
                   GitHub

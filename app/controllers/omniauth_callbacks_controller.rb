@@ -34,4 +34,16 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url(:oauth => 'google')
     end
   end
+
+  def facebook
+    @user = User.find_for_facebook_oauth request.env['omniauth.auth']
+
+    if @user.persisted?
+      flash[:notice] = 'Successfully signed in through Facebook!'
+      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
+    else
+      session["devise.user_attributes"] = @user.attributes
+      redirect_to new_user_registration_url(:oauth => 'facebook')
+    end
+  end
 end

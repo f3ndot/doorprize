@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :omniauthable, :omniauth_providers => [:google_oauth2, :twitter, :github]
+         :lockable, :omniauthable, :omniauth_providers => [:google_oauth2, :twitter, :github, :facebook]
 
   def gravatar(size=nil)
     str = "http://www.gravatar.com/avatar/" << Digest::MD5.hexdigest(email.downcase)
@@ -47,6 +47,14 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_google_oauth2(auth)
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    unless user
+      user = User.create name: auth.info.name, email: auth.info.email, provider: auth.provider, uid: auth.uid
+    end
+    user
+  end
+
+  def self.find_for_facebook_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
       user = User.create name: auth.info.name, email: auth.info.email, provider: auth.provider, uid: auth.uid

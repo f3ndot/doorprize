@@ -68,7 +68,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
-# gem 'omniauth-facebook'
+gem 'omniauth-facebook'
 gem 'cancan'
 
 # Allow mocking and stubbing in tests

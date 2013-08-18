@@ -3,11 +3,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :display_prelaunch_if_too_soon, except: [:robots]
+  before_action :display_prelaunch_if_too_soon, except: [:robots, :privacy, :terms]
 
   def robots
     robots = File.read(Rails.root + "config/robots.#{Rails.env}.txt")
     render text: robots, layout: false, content_type: "text/plain"
+  end
+
+  def privacy
+    render text: 'Coming soon', layout: true
+  end
+
+  def terms
+    render text: 'Coming soon', layout: true
   end
 
   protected
