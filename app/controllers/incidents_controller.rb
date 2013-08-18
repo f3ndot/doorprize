@@ -1,4 +1,5 @@
 class IncidentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_incident, only: [:show, :edit, :update, :destroy, :edit_override_score, :update_override_score]
 
   # GET /incidents
