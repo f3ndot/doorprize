@@ -21,15 +21,15 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   def admin?
-    role == ADMIN_LVL
+    read_attribute( :role )== ADMIN_LVL
   end
 
   def mod?
-    role == MOD_LVL
+    read_attribute( :role )== MOD_LVL
   end
 
   def user?
-    role == USER_LVL
+    read_attribute( :role )== USER_LVL
   end
 
   def role
