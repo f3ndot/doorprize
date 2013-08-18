@@ -8,32 +8,38 @@ one:
   email: one@example.com
   name: John Smith
   encrypted_password: $2a$10$0rr1KyEuqOwyCkM6ISTEPecYMclVHdbLqfDoRgu7Acu4Wu15V6mxO
+  role: 0
 
 two:
   email: two@example.com
   name: Bob Bill
   encrypted_password: $2a$10$KJfaIThkhw8Jhjasf57kjPIHSashFSfs3578Kkjhkh9744dhKgjgh
+  role: 0
 
 twitter:
   email: twitter@example.com
   name: Tweety Tweeterson
   provider: twitter
   uid: '21124253'
+  role: 0
 
 github:
   email: github@example.com
   name: A. Git
   provider: github
   uid: '352335699'
+  role: 0
 
 facebook:
   email: facebook@example.com
   name: Mark Zuckerburg
   provider: facebook
   uid: '1582662'
+  role: 0
 
 google:
   email: google@example.com
   name: Googly Eyes
   provider: google
   uid: '80225672457'
+  role: 0
