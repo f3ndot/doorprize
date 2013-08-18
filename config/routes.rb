@@ -5,6 +5,10 @@ Doorprize::Application.routes.draw do
   resources :cars
 
   resources :incidents do
+    member do
+      get 'assign-score', to: 'incidents#edit_override_score', as: :edit_override_score
+      patch 'assign-score', to: 'incidents#update_override_score', as: :update_override_score
+    end
     collection do
       get 'sort/:sort', to: 'incidents#index', as: :sorted
       get 'sort/:sort/:user', to: 'incidents#index', as: :byuser_sorted
@@ -17,9 +21,9 @@ Doorprize::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'incidents#index'
 
-  get 'robots.txt' => 'application#robots'
-  get 'privacy' => 'application#privacy', as: :privacy
-  get 'terms' => 'application#terms', as: :terms
+  get 'robots.txt' => 'pages#robots'
+  get 'privacy' => 'pages#privacy', as: :privacy
+  get 'terms' => 'pages#terms', as: :terms
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

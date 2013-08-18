@@ -3,8 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  check_authorization unless: :devise_controller?
+
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :display_prelaunch_if_too_soon, except: [:robots, :privacy, :terms]
+
+  rescue_from CanCan::AccessDenied do |exception|
+    alert_message = "<i class='icon-minus-sign'></i> <strong>Access Denied.</strong> ".html_safe
+    alert_message << exception.message
+    redirect_to root_url, :alert => alert_message
+  end
 
   def robots
     robots = File.read(Rails.root + "config/robots.#{Rails.env}.txt")

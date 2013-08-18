@@ -1,0 +1,21 @@
+.page-header
+  %h1 Set score override
+
+= simple_form_for @incident, url: { action: 'update_override_score' }, html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+
+  .alert.alert-info
+    %i.icon-info-sign
+    Do you best to manually verify all attributes of the data point. Use your best judgement to assign a legitimacy score.
+
+  .form-inputs
+    = f.input :score_override, placeholder: "Currently #{@incident.score}", hint: "Choose a number between 0 and 6ish"
+
+  .form-actions
+    = f.button :submit, 'Save legitimacy score', :class => 'btn btn-primary'
+    .reporting-as-user.pull-right
+      Assigning incident score as
+      %strong
+        %img.img-rounded{ src: current_user.gravatar(32) }
+        = current_user.name
+
