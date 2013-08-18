@@ -21,6 +21,10 @@ jQuery ->
   if $('.geolocate').size() > 0
     $('.get-location').on 'click', (e) ->
       $getLocationBtn = $(this)
+      $geocodeModal = $('#geocodeModal')
+      if $getLocationBtn.data('populated') == true
+        $geocodeModal.modal 'show'
+        return
       $getLocationBtn.addClass 'btn-info'
       $getLocationBtn.find('.gps-text').text ' Locating...'
       gl = navigator.geolocation
@@ -31,9 +35,21 @@ jQuery ->
             $getLocationBtn.removeClass 'btn-info'
             $getLocationBtn.addClass 'btn-success'
             $getLocationBtn.find('.gps-text').text ' Located'
-            console.log position
+
             geocodeCallback = (response) ->
-              console.log response
+              if response.status == 'ZERO_RESULTS'
+                $getLocationBtn.removeClass 'btn-info'
+                $getLocationBtn.removeClass 'btn-success'
+                $getLocationBtn.addClass 'btn-danger'
+                $getLocationBtn.find('.gps-text').text ' Couldn\'t get address'
+              $geocodeModal.find('.address-list').html ''
+              $geocodeModal.find('.address-count').text response.results.length
+              for result in response.results
+                cleanText = $('<div/>').text(result.formatted_address).html()
+                $geocodeModal.find('.address-list').append '<li>'+cleanText+'</li>'
+              $geocodeModal.modal 'show'
+              $getLocationBtn.data 'populated', true
+
             jQuery.get 'http://maps.googleapis.com/maps/api/geocode/json', { sensor: true, latlng: position.coords.latitude+','+position.coords.longitude }, geocodeCallback, 'json'
         ),(
           (error) =>

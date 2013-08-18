@@ -79,3 +79,20 @@
   - for i in 0..10
     .severity{ data: { level: i, color: Incident.severity_color(i) } }
       = Incident.severity_text i
+
+#geocodeModal.modal.hide.fade{tabindex: "-1", role: "dialog", aria: { labelledby: "geocodeModalLabel", hidden: "true"}}
+  .modal-header
+    %button.close{ type: 'button', data: {dismiss: "modal"}, aria: {hidden: "true" } }×
+    %h3#geocodeModalLabel
+      Found
+      %span.address-count
+      locations
+  .modal-body
+    .alert.alert-info
+      %i.icon-info-sign
+      %strong Select the most accurate address.
+      Choose a more generic address if the street is inaccurate or street number is wrong
+    %ul.address-list
+  .modal-footer
+    %button.btn{ data: {dismiss: "modal"}, aria: {hidden: "true" } } Cancel
+    %button.btn.btn-primary Choose Address
