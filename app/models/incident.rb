@@ -118,12 +118,17 @@ class Incident < ActiveRecord::Base
       score += 1 if car.driver_contact.present?
     end
     if witnesses.count > 0
+      witness_name_score = false
       witness_score = false
       witnesses.each do |w|
+        if w.name.present?
+          witness_name_score = true
+        end
         if w.name.present? && w.contact.present?
           witness_score = true
         end
       end
+      score += 1 if witness_name_score
       score += 1 if witness_score
     end
     score += 3 if video.present?
