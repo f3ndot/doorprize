@@ -5,6 +5,10 @@ Doorprize::Application.routes.draw do
   resources :cars
 
   resources :incidents do
+    member do
+      get 'assign-score', to: 'incidents#edit_override_score', as: :edit_override_score
+      patch 'assign-score', to: 'incidents#update_override_score', as: :update_override_score
+    end
     collection do
       get 'sort/:sort', to: 'incidents#index', as: :sorted
       get 'sort/:sort/:user', to: 'incidents#index', as: :byuser_sorted

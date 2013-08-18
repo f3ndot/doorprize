@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update, :destroy]
+  before_action :set_incident, only: [:show, :edit, :update, :destroy, :edit_override_score, :update_override_score]
 
   # GET /incidents
   # GET /incidents.json
@@ -54,6 +54,25 @@ class IncidentsController < ApplicationController
   def new
     @incident = Incident.new
     @incident.build_car
+  end
+
+
+  def edit_override_score
+  end
+
+  def update_override_score
+    incident_params = params.require(:incident).permit(:score_override)
+    incident_params[:score_override] = nil if incident_params[:score_override].blank?
+
+    respond_to do |format|
+      if @incident.update_attributes! score_override: incident_params[:score_override]
+        format.html { redirect_to @incident, notice: 'Incident was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit_override_score' }
+        format.json { render json: @incident.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /incidents/1/edit
