@@ -12,7 +12,6 @@
           Submitting a report anonymously
           %em significantly
           reduces its legitimacy score.
-
       %p
         Please take the 2 seconds to
         = link_to 'sign up', new_user_registration_path, class: 'btn btn-small btn-primary'
@@ -32,6 +31,17 @@
         = link_to user_omniauth_authorize_path(:github), class: 'btn btn-small' do
           %i.icon-github
           GitHub
+  - else
+    .alert.alert-block.alert-info
+      %p.lead
+        %i.icon-info-sign
+        Try to make your report as detailed as possible.
+      %p
+        The more information you provide, the higher the
+        %a{href: '#', rel: 'scorepopover', data: {title: 'What is a legitimacy score?', content: "<p><strong>Doored.ca</strong> is a <em>crowdsourced</em> stats database with all of its data entered by users. As a result, many reports could be fraudulent or misrepresented.</p><p>A <strong>legitimacy or reliability score</strong> exists to automatically determine which data points are most likely to be accurate.</p><p>An admin or moderator, at a later time, may manually verify the details of a report and set a score override.</p>".html_safe}}
+          %strong legitimacy score
+          %i.icon-question-sign
+        will be.
 
   .form-inputs
     = f.input :description
