@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     when 'twitter'
       'Twitter'
     when 'google_oauth2'
-      'Google Accounts'
+      'Google Account'
     when 'github'
       'GitHub'
     when 'facebook'
@@ -33,7 +33,23 @@ class User < ActiveRecord::Base
   def self.find_for_twitter_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
-      user = User.create name: auth.info.name, provider: auth.provider,uid: auth.uid
+      user = User.create name: auth.info.name, provider: auth.provider, uid: auth.uid
+    end
+    user
+  end
+
+  def self.find_for_github_oauth(auth)
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    unless user
+      user = User.create name: auth.info.name, email: auth.info.email, provider: auth.provider, uid: auth.uid
+    end
+    user
+  end
+
+  def self.find_for_google_oauth2(auth)
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    unless user
+      user = User.create name: auth.info.name, email: auth.info.email, provider: auth.provider, uid: auth.uid
     end
     user
   end
