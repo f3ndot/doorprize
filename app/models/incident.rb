@@ -39,7 +39,10 @@ class Incident < ActiveRecord::Base
   end
 
   def score_percent
-    ((score / MAX_SCORE.to_f) * 100).round.to_s << '%'
+    percent = ((score / MAX_SCORE.to_f) * 100)
+    percent = 100 if percent > 100
+    percent = 0 if percent < 0
+    percent.round.to_s << '%'
   end
 
   # TODO This is a dependency code-smell. Move into Car model
