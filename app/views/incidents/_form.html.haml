@@ -1,4 +1,4 @@
-= simple_form_for @incident, html: { class: 'form-horizontal' } do |f|
+= simple_form_for @incident, html: { class: 'form-horizontal geolocate' } do |f|
   = f.error_notification
 
   - if not user_signed_in?
@@ -49,7 +49,7 @@
   .form-inputs
     = f.input :description
     = f.input :datetime_of_incident, as: :datetime_picker
-    = f.input :location
+    = f.input :location, as: :location
     = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
     = f.input :police_report_number
     = f.input :video
@@ -79,3 +79,19 @@
   - for i in 0..10
     .severity{ data: { level: i, color: Incident.severity_color(i) } }
       = Incident.severity_text i
+
+#geocodeModal.modal.hide.fade{tabindex: "-1", role: "dialog", aria: { labelledby: "geocodeModalLabel", hidden: "true"}}
+  .modal-header
+    %button.close{ type: 'button', data: {dismiss: "modal"}, aria: {hidden: "true" } }×
+    %h3#geocodeModalLabel
+      Found
+      %span.address-count
+      locations
+  .modal-body
+    .alert.alert-info
+      %i.icon-info-sign
+      %strong Select the most accurate address.
+      Choose a more generic address if the street is inaccurate or street number is wrong
+    .address-list.well
+  .modal-footer
+    %button.btn{ data: {dismiss: "modal"}, aria: {hidden: "true" } } Cancel
