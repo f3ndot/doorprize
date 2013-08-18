@@ -7,7 +7,7 @@ jQuery ->
   # $(".tooltip").tooltip()
   $("a[rel=tooltip], span[rel=tooltip]").tooltip()
   $(".required abbr").tooltip()
-  $("i[rel=tooltip]").tooltip()
+  $("i[rel=tooltip], button[rel=tooltip]").tooltip()
   $("a.account-toggle").tooltip
     placement: 'bottom'
     container: 'body'

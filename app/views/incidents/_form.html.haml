@@ -1,4 +1,4 @@
-= simple_form_for @incident, html: { class: 'form-horizontal' } do |f|
+= simple_form_for @incident, html: { class: 'form-horizontal geolocate' } do |f|
   = f.error_notification
 
   - if not user_signed_in?
@@ -49,7 +49,7 @@
   .form-inputs
     = f.input :description
     = f.input :datetime_of_incident, as: :datetime_picker
-    = f.input :location
+    = f.input :location, as: :location
     = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
     = f.input :police_report_number
     = f.input :video
