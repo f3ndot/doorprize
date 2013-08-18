@@ -37,7 +37,7 @@ class IncidentsController < ApplicationController
 
     if safe_params[:user].present?
       user = User.find(safe_params[:user])
-      sorted_by << " by #{user.email}"
+      sorted_by << " by #{user.name}"
       incidents = incidents.by_user user
     end
 
