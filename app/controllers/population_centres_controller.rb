@@ -11,6 +11,7 @@ class PopulationCentresController < ApplicationController
   # GET /population_centres/1
   # GET /population_centres/1.json
   def show
+    redirect_to population_centre_incidents_path(population_centre_id: params[:id])
   end
 
   # GET /population_centres/new

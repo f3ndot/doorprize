@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
+  before_action do
+    if params[:population_centre_id].present?
+      @pop_drop_down_name = PopulationCentre.find(params[:population_centre_id])
+    else
+      @pop_drop_down_name = "Select Population Centre"
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     alert_message = "<i class='icon-minus-sign'></i> <strong>Access Denied.</strong> ".html_safe
     alert_message << exception.message

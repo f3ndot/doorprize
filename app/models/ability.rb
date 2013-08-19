@@ -9,8 +9,8 @@ class Ability
     can :create, Incident
     can :create, Witness
     can :create, Car
-    cannot :read, PopulationCentre
     cannot :manage, PopulationCentre
+    can [:index, :show], PopulationCentre
 
     if user.admin?
       can :manage, :all

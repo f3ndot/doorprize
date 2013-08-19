@@ -1,5 +1,5 @@
 Doorprize::Application.routes.draw do
-  resources :population_centres do
+  resources :population_centres, path: "loc" do
     resources :incidents do
       collection do
         get 'sort/:sort', to: 'incidents#index', as: :sorted

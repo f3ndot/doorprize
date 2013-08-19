@@ -1,5 +1,22 @@
 - model_class = Incident
 .page-header
+  .pull-right
+    .btn-group
+      %a.btn.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
+        = @pop_drop_down_name
+        %b.caret
+      %ul.dropdown-menu
+        - if params[:population_centre_id].present?
+          %li
+            = link_to root_path do
+              %strong All of Canada
+        - PopulationCentre.limit(5).each do |loc|
+          %li
+            = link_to loc, population_centre_incidents_path(loc)
+        %li.divider
+        %li
+          = link_to population_centres_path do
+            %strong More Cities...
   %h1
     Recorded Incidents in
     - if params[:population_centre_id].present?
