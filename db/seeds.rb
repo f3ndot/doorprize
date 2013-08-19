@@ -11,10 +11,33 @@ SIZE_GROUP = 2
 RANK = 11
 
 population_centres = []
+province_map = {
+  'Ont.' => 'Ontario',
+  'Que.' => 'Quebec',
+  'B.C.' => 'British Columbia',
+  'Alta.' => 'Alberta',
+  'Man.' => 'Manitoba',
+  'Sask.' => 'Saskatchewan',
+  'N.S.' => 'Nova Scotia',
+  'N.B.' => 'New Brunswick',
+  'N.L.' => 'Newfoundland and Labrador',
+  'P.E.I.' => 'Prince Edward Island',
+  'N.T.' => 'Northwest Territories',
+  'Yuk.' => 'Yukon',
+  'Nun.' => 'Nunavut',
+}
 
 require 'csv'
 CSV.foreach(Rails.root + "db/population_centres.csv") do |row|
-  population_centres.push({ name: row[GEOGRAPHIC_NAME], rank: row[RANK] }) if row[SIZE_GROUP] != 'Small'
+  md = row[GEOGRAPHIC_NAME].match /([^"]+)( \((.*)\))/
+  if !md.nil?
+    city = md[1]
+    province = province_map[md[3]]
+  else
+    city = "FIXME - #{row[GEOGRAPHIC_NAME]}"
+    province = 'FIXME'
+  end
+  population_centres.push({ city: city, province: province, rank: row[RANK] }) if row[SIZE_GROUP] != 'Small'
 end
 
 PopulationCentre.create population_centres

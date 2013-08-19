@@ -22,10 +22,6 @@
   %strong= model_class.human_attribute_name(:rank) + ':'
   %br
   = @population_centre.rank
-%p
-  %strong= model_class.human_attribute_name(:name) + ':'
-  %br
-  = @population_centre.name
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), population_centres_path, :class => 'btn'

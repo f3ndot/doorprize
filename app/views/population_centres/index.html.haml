@@ -10,7 +10,6 @@
       %th= model_class.human_attribute_name(:latitude)
       %th= model_class.human_attribute_name(:longitude)
       %th= model_class.human_attribute_name(:rank)
-      %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -22,7 +21,6 @@
         %td= population_centre.latitude
         %td= population_centre.longitude
         %td= population_centre.rank
-        %td= population_centre.name
         %td=l population_centre.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_population_centre_path(population_centre), :class => 'btn btn-mini'
