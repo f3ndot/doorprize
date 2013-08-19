@@ -9,10 +9,14 @@ class Ability
     can :create, Incident
     can :create, Witness
     can :create, Car
+    cannot :read, PopulationCentre
+    cannot :manage, PopulationCentre
 
     if user.admin?
       can :manage, :all
       can [:edit_override_score, :update_override_score], Incident
+      can :manage, PopulationCentre
+      can :read, PopulationCentre
     end
 
     if user.mod?

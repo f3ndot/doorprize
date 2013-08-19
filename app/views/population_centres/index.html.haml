@@ -2,6 +2,8 @@
 
 %table
   %tr
+    %th Rank
+    %th Name
     %th City
     %th Province
     %th Latitude
@@ -12,6 +14,8 @@
 
   - @population_centres.each do |population_centre|
     %tr
+      %td= population_centre.rank
+      %td= population_centre.name
       %td= population_centre.city
       %td= population_centre.province
       %td= population_centre.latitude

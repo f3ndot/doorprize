@@ -1,4 +1,5 @@
 class PopulationCentresController < ApplicationController
+  load_and_authorize_resource
   before_action :set_population_centre, only: [:show, :edit, :update, :destroy]
 
   # GET /population_centres
