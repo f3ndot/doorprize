@@ -5,35 +5,41 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.json
   def index
-    safe_params = params.permit :sort, :page, :user
+    safe_params = params.permit :sort, :page, :user, :population_centre_id
     @sortable_words = {latest: 'Latest incidents', oldest: 'Oldest incidents', latest_submitted: 'Newest submissions', oldest_submitted: 'Oldest submissions', most_severe: 'Most severe', least_severe: 'Least severe'}
+
+    if safe_params[:population_centre_id].blank?
+      incidents = Incident.all
+    else
+      incidents = Incident.by_city(safe_params[:population_centre_id])
+    end
 
     case safe_params[:sort]
     when 'latest', 'newest'
-      incidents = Incident.latest_incidents
+      incidents = incidents.latest_incidents
       sorted_by = 'Latest incidents'
     when 'oldest'
-      incidents = Incident.oldest_incidents
+      incidents = incidents.oldest_incidents
       sorted_by = 'Oldest incidents'
     when 'latest-submitted', 'newest-submitted'
-      incidents = Incident.latest_submitted
+      incidents = incidents.latest_submitted
       sorted_by = 'Newest submissions'
     when 'oldest-submitted'
-      incidents = Incident.oldest_submitted
+      incidents = incidents.oldest_submitted
       sorted_by = 'Oldest submissions'
     when 'most-severe'
-      incidents = Incident.most_severe
+      incidents = incidents.most_severe
       sorted_by = 'Most severe'
     when 'least-severe'
-      incidents = Incident.least_severe
+      incidents = incidents.least_severe
       sorted_by = 'Least severe'
     when 'least-severe'
-      incidents = Incident.least_severe
+      incidents = incidents.least_severe
       sorted_by = 'Least severe'
     else
       redirect_to incidents_path if safe_params[:sort].present?
       sorted_by = 'Latest incidents'
-      incidents = Incident.latest_incidents
+      incidents = incidents.latest_incidents
     end
 
     if safe_params[:user].present?

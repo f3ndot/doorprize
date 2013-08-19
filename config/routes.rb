@@ -1,5 +1,12 @@
 Doorprize::Application.routes.draw do
-  resources :population_centres
+  resources :population_centres do
+    resources :incidents do
+      collection do
+        get 'sort/:sort', to: 'incidents#index', as: :sorted
+        get 'sort/:sort/:user', to: 'incidents#index', as: :byuser_sorted
+      end
+    end
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: :omniauth_callbacks }
   resources :witnesses

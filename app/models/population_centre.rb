@@ -5,6 +5,10 @@ class PopulationCentre < ActiveRecord::Base
   validates :province, presence: true
   validates :rank, presence: true, numericality: { only_integer: true }
 
+  def to_s
+    name
+  end
+
   def name
     "#{city}, #{province}"
   end
