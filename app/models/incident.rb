@@ -3,6 +3,8 @@ class Incident < ActiveRecord::Base
   has_one :car, autosave: true, dependent: :destroy
   has_many :witnesses, autosave: true, dependent: :destroy
   belongs_to :user
+  belongs_to :population_centre
+
   accepts_nested_attributes_for :car, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :witnesses, allow_destroy: true, reject_if: :all_blank
 
@@ -25,6 +27,7 @@ class Incident < ActiveRecord::Base
   scope :oldest_submitted, -> { order 'created_at ASC' }
   scope :most_severe, -> { order 'severity DESC' }
   scope :least_severe, -> { order 'severity ASC' }
+  scope :by_city, -> (city_id) { where('population_centre_id = ?', city_id) }
 
   before_save :calculate_score
 
