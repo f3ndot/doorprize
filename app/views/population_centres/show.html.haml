@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b City:
+  = @population_centre.city
+%p
+  %b Province:
+  = @population_centre.province
+%p
+  %b Latitude:
+  = @population_centre.latitude
+%p
+  %b Longitude:
+  = @population_centre.longitude
+
+= link_to 'Edit', edit_population_centre_path(@population_centre)
+\|
+= link_to 'Back', population_centres_path

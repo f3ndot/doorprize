@@ -1,0 +1,25 @@
+%h1 Listing population_centres
+
+%table
+  %tr
+    %th City
+    %th Province
+    %th Latitude
+    %th Longitude
+    %th
+    %th
+    %th
+
+  - @population_centres.each do |population_centre|
+    %tr
+      %td= population_centre.city
+      %td= population_centre.province
+      %td= population_centre.latitude
+      %td= population_centre.longitude
+      %td= link_to 'Show', population_centre
+      %td= link_to 'Edit', edit_population_centre_path(population_centre)
+      %td= link_to 'Destroy', population_centre, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Population centre', new_population_centre_path

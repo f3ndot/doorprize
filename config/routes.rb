@@ -1,4 +1,6 @@
 Doorprize::Application.routes.draw do
+  resources :population_centres
+
   devise_for :users, controllers: { omniauth_callbacks: :omniauth_callbacks }
   resources :witnesses
 

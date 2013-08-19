@@ -1,0 +1,11 @@
+= simple_form_for(@population_centre) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :city
+    = f.input :province
+    = f.input :latitude
+    = f.input :longitude
+
+  .form-actions
+    = f.button :submit
