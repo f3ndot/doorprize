@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+GEOGRAPHIC_NAME = 1
+SIZE_GROUP = 2
+RANK = 11
+
+population_centres = []
+
+require 'csv'
+CSV.foreach(Rails.root + "db/population_centres.csv") do |row|
+  population_centres.push({ name: row[GEOGRAPHIC_NAME], rank: row[RANK] }) if row[SIZE_GROUP] != 'Small'
+end
+
+PopulationCentre.create population_centres
