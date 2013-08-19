@@ -1,18 +1,13 @@
 class LocationInput < SimpleForm::Inputs::Base
   def input
-
-    @picker_name = 'datetime_picker'
-    @picker_format = "yyyy-MM-dd HH:mm PP"
-
     street_address = input_html_options[:value]
     if street_address.blank?
-      method_value = object.try(attribute_name)
-      street_address = template.l(method_value) if method_value # default value
+      street_address = object.try(attribute_name)
     end
 
     #create the input
 
-    location_input = @builder.text_field(attribute_name, { data: { format: @picker_format }, value: street_address, placeholder: 'Yonge St. and Dundas St.' }.merge(input_html_options))
+    location_input = @builder.text_field(attribute_name, { data: { format: 'string' }, value: street_address, placeholder: 'Yonge St. and Dundas St.' }.merge(input_html_options))
 
     # add calendar button
 
