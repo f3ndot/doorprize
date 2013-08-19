@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130818190733) do
+ActiveRecord::Schema.define(version: 20130819184826) do
 
   create_table "cars", force: true do |t|
     t.text     "description"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20130818190733) do
   end
 
   add_index "incidents", ["user_id"], name: "index_incidents_on_user_id"
+
+  create_table "population_centres", force: true do |t|
+    t.string   "city"
+    t.string   "province"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
