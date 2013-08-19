@@ -1,24 +1,33 @@
-%p#notice= notice
+- model_class = PopulationCentre
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
 
 %p
-  %b Rank:
-  = @population_centre.rank
-%p
-  %b Name:
-  = @population_centre.name
-%p
-  %b City:
+  %strong= model_class.human_attribute_name(:city) + ':'
+  %br
   = @population_centre.city
 %p
-  %b Province:
+  %strong= model_class.human_attribute_name(:province) + ':'
+  %br
   = @population_centre.province
 %p
-  %b Latitude:
+  %strong= model_class.human_attribute_name(:latitude) + ':'
+  %br
   = @population_centre.latitude
 %p
-  %b Longitude:
+  %strong= model_class.human_attribute_name(:longitude) + ':'
+  %br
   = @population_centre.longitude
+%p
+  %strong= model_class.human_attribute_name(:rank) + ':'
+  %br
+  = @population_centre.rank
+%p
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
+  = @population_centre.name
 
-= link_to 'Edit', edit_population_centre_path(@population_centre)
-\|
-= link_to 'Back', population_centres_path
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), population_centres_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_population_centre_path(@population_centre), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), population_centre_path(@population_centre), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

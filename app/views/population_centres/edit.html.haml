@@ -1,7 +1,4 @@
-%h1 Editing population_centre
-
-= render 'form'
-
-= link_to 'Show', @population_centre
-\|
-= link_to 'Back', population_centres_path
+- model_class = PopulationCentre
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"

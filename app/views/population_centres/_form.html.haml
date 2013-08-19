@@ -1,13 +1,10 @@
-= simple_form_for(@population_centre) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :rank
-    = f.input :name
-    = f.input :city
-    = f.input :province
-    = f.input :latitude
-    = f.input :longitude
-
+= simple_form_for @population_centre, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :city
+  = f.input :province
+  = f.input :latitude
+  = f.input :longitude
+  = f.input :rank
+  = f.input :name
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), population_centres_path, :class => 'btn'
