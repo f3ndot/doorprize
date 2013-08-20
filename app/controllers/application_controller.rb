@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   check_authorization unless: :devise_controller?
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_action :display_prelaunch_if_too_soon, except: [:robots, :privacy, :terms]
+  before_action :display_prelaunch_if_too_soon, except: [:pages => :robots, :pages => :privacy, :pages => :terms, :pages => :prelaunch]
   # Short term fix for cancan 1.6.10 and rails 4.0.0 strong params problem
   before_filter do
     resource = controller_name.singularize.to_sym
