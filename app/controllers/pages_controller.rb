@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  authorize_resource :class => false
+
   def robots
     authorize! :robots, :pages
     robots = File.read(Rails.root + "config/robots.#{Rails.env}.txt")
@@ -13,5 +15,9 @@ class PagesController < ApplicationController
   def terms
     authorize! :terms, :pages
     render text: 'Coming soon', layout: true
+  end
+
+  def prelaunch
+    render text: File.read(Rails.root + "config/pre-launch-page.html"), layout: false, content_type: "text/html"
   end
 end

@@ -5,7 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     can :read, :all
-    can [:robots, :privacy, :terms], :pages
+    can [:robots, :privacy, :terms, :prelaunch], :pages
     can :create, Incident
     can :create, Witness
     can :create, Car

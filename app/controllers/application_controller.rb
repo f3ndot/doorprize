@@ -20,19 +20,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => alert_message
   end
 
-  def robots
-    robots = File.read(Rails.root + "config/robots.#{Rails.env}.txt")
-    render text: robots, layout: false, content_type: "text/plain"
-  end
-
-  def privacy
-    render text: 'Coming soon', layout: true
-  end
-
-  def terms
-    render text: 'Coming soon', layout: true
-  end
-
   protected
 
   def configure_permitted_parameters

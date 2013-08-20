@@ -24,6 +24,7 @@ Doorprize::Application.routes.draw do
   get 'robots.txt' => 'pages#robots'
   get 'privacy' => 'pages#privacy', as: :privacy
   get 'terms' => 'pages#terms', as: :terms
+  get 'prelaunch' => 'pages#prelaunch', as: :prelaunch
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
