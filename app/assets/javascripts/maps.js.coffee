@@ -17,7 +17,6 @@ jQuery ->
     markers = {}
 
     plotMapCallback = (incidents_json) ->
-      console.log incidents_json
       for incident in incidents_json
         vLatLng = new google.maps.LatLng incident.latitude, incident.longitude
         markers[incident.id] = new google.maps.Marker
@@ -25,12 +24,13 @@ jQuery ->
           position: vLatLng,
           title: incident.to_s
         incidentBounds.extend vLatLng
+        google.maps.event.addListener markers[incident.id], 'click', ->
+          window.location.href = incident.url
 
-      # global_map.setCenter incidentBounds.getCenter()
-      # global_map.fitBounds incidentBounds
+      global_map.setCenter incidentBounds.getCenter()
+      global_map.fitBounds incidentBounds
 
     jQuery.get '/incidents.json', plotMapCallback, 'json'
-
 
   if document.getElementById("preview_map") != null
     preview_map = new google.maps.Map document.getElementById("preview_map"),
