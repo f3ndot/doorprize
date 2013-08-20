@@ -6,6 +6,32 @@ jQuery ->
 
   default_latlng = new google.maps.LatLng 43.66365, -79.377594
 
+  if document.getElementById("global_map") != null
+    global_map = new google.maps.Map document.getElementById("global_map"),
+      center: default_latlng,
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel: false
+
+    incidentBounds = new google.maps.LatLngBounds()
+    markers = {}
+
+    plotMapCallback = (incidents_json) ->
+      console.log incidents_json
+      for incident in incidents_json
+        vLatLng = new google.maps.LatLng incident.latitude, incident.longitude
+        markers[incident.id] = new google.maps.Marker
+          map: global_map,
+          position: vLatLng,
+          title: incident.to_s
+        incidentBounds.extend vLatLng
+
+      # global_map.setCenter incidentBounds.getCenter()
+      # global_map.fitBounds incidentBounds
+
+    jQuery.get '/incidents.json', plotMapCallback, 'json'
+
+
   if document.getElementById("preview_map") != null
     preview_map = new google.maps.Map document.getElementById("preview_map"),
       center: default_latlng,
