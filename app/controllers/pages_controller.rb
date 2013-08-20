@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  skip_authorization_check
   def robots
     authorize! :robots, :pages
     robots = File.read(Rails.root + "config/robots.#{Rails.env}.txt")
@@ -17,6 +16,7 @@ class PagesController < ApplicationController
   end
 
   def prelaunch
+    authorize! :prelaunch, :pages
     render text: File.read(Rails.root + "config/pre-launch-page.html"), layout: false, content_type: "text/html"
   end
 end
