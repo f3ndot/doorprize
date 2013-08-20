@@ -45,26 +45,36 @@
           %strong legitimacy score
           %i.icon-question-sign
         will be.
-
-  .form-inputs
-    = f.input :description
-    = f.input :datetime_of_incident, as: :datetime_picker
-    = f.input :location, as: :location
-    = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
-    = f.input :police_report_number
-    = f.input :video
-  %h4 The vehicle
-  = f.simple_fields_for :car do |car|
-    = render 'car_fields', f: car
-  %h4 Witnesses
-  / witnesses
-  = f.simple_fields_for :witnesses do |witnesses|
-    = render 'witness_fields', f: witnesses
-  .links.control-group
-    .controls
-      = link_to_add_association f, :witnesses, class: 'btn btn-small' do
-        %i.icon-eye-open
-        Add a witness
+  .row
+    .span6
+      .form-inputs
+        = f.input :description
+        = f.input :datetime_of_incident, as: :datetime_picker
+        = f.input :location, as: :location
+        = f.input :latitude, :as => :hidden
+        = f.input :longitude, :as => :hidden
+        = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
+        = f.input :police_report_number
+        = f.input :video
+      %h4 The vehicle
+      = f.simple_fields_for :car do |car|
+        = render 'car_fields', f: car
+      %h4 Witnesses
+      / witnesses
+      = f.simple_fields_for :witnesses do |witnesses|
+        = render 'witness_fields', f: witnesses
+      .links.control-group
+        .controls
+          = link_to_add_association f, :witnesses, class: 'btn btn-small' do
+            %i.icon-eye-open
+            Add a witness
+    .span6
+      %p
+        %strong Address Preview
+        %span#preview_map_updating.label.label-info{style: 'display:none'}
+          %i.icon-refresh.icon-spin
+          Updating...
+      #preview_map.mapfix{style: 'height:400px;'}
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'

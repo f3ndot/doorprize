@@ -24,6 +24,17 @@
   padding: 9px 5px 9px 10px;
 }
 
+// fixes for Google Maps + Bootstrap
+.mapfix {
+  img {
+    max-width: none;
+  }
+  label {
+    width: auto;
+    display: inline;
+  }
+}
+
 .yellow-stripe {
   padding: 3px;
   font-weight: 600;

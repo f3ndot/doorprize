@@ -15,5 +15,6 @@
 //= require twitter/bootstrap
 //= require cocoon
 //= require browser_timezone_rails/application.js
+//= require jquery.ba-throttle-debounce.min.js
 //= require bootstrap-datetimepicker.min.js
 //= require_tree .

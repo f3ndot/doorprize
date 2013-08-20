@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130818190733) do
+ActiveRecord::Schema.define(version: 20130820223905) do
 
   create_table "cars", force: true do |t|
     t.text     "description"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20130818190733) do
     t.integer  "user_id"
     t.integer  "score_override"
     t.integer  "score"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "incidents", ["user_id"], name: "index_incidents_on_user_id"
