@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-  authorize_resource :class => false
-
+  skip_authorization_check
   def robots
     authorize! :robots, :pages
     robots = File.read(Rails.root + "config/robots.#{Rails.env}.txt")
