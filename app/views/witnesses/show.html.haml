@@ -6,7 +6,7 @@
   %strong= model_class.human_attribute_name(:name) + ':'
   %br
   - if @witness.name.present?
-    - if @witness.incident.user = current_user
+    - if @witness.incident.user == current_user
       = @witness.name
     - else
       %i.icon-lock
@@ -18,7 +18,7 @@
   %strong= model_class.human_attribute_name(:contact) + ':'
   %br
   - if @witness.contact.present?
-    - if @witness.incident.user = current_user
+    - if @witness.incident.user == current_user
       = @witness.contact
     - else
       %i.icon-lock

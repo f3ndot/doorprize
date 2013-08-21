@@ -30,7 +30,7 @@
   %strong= model_class.human_attribute_name(:driver_name) + ':'
   %br
   - if @car.driver_name.present?
-    - if @car.incident.user = current_user
+    - if @car.incident.user == current_user
       = @car.driver_name
     - else
       %i.icon-lock
@@ -42,7 +42,7 @@
   %strong= model_class.human_attribute_name(:driver_contact) + ':'
   %br
   - if @car.driver_contact.present?
-    - if @car.incident.user = current_user
+    - if @car.incident.user == current_user
       = @car.driver_contact
     - else
       %i.icon-lock
