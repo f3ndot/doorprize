@@ -62,6 +62,13 @@
           %th{style: 'text-align:center'}
             %i.icon-wrench{title: 'Actions', rel: 'tooltip'}
       %tbody
+        - if Rails.env.development? || Rails.env.staging?
+          %tr
+            %td{colspan: 10, style: 'margin:0;padding:0'}
+              .text-center.yellow-stripe
+                %i.icon-exclamation-sign
+                %strong Also note these stats are not real!!!
+                %i.icon-exclamation-sign
         - @incidents.each do |incident|
           %tr
             %td= link_to incident.short_name, incident_path(incident)
