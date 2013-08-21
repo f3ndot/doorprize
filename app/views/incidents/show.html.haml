@@ -76,10 +76,10 @@
     %ol
       - @incident.witnesses.each do |witness|
         %li
-          - if witness.private?
+          - if witness.private? || witness.incident.user != current_user
             %i.icon-lock
-            = witness
-            %a{ href: '#', rel: 'tooltip' , title: 'witness details withheld for privacy their privacy' } why?
+            (Withheld)
+            %a{ href: '#', rel: 'tooltip' , title: 'witness details publicly withheld for their privacy' } why?
           - else
             = link_to witness, witness_path(witness)
 

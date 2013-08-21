@@ -29,11 +29,27 @@
 %p
   %strong= model_class.human_attribute_name(:driver_name) + ':'
   %br
-  = @car.driver_name
+  - if @car.driver_name.present?
+    - if @car.incident.user = current_user
+      = @car.driver_name
+    - else
+      %i.icon-lock
+      (Withheld)
+      %a{ href: '#', rel: 'tooltip' , title: 'driver details publicly withheld for their privacy' } why?
+  - else
+    %span.muted (None)
 %p
   %strong= model_class.human_attribute_name(:driver_contact) + ':'
   %br
-  = @car.driver_contact
+  - if @car.driver_contact.present?
+    - if @car.incident.user = current_user
+      = @car.driver_contact
+    - else
+      %i.icon-lock
+      (Withheld)
+      %a{ href: '#', rel: 'tooltip' , title: 'driver details publicly withheld for their privacy' } why?
+  - else
+    %span.muted (None)
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), cars_path, :class => 'btn'

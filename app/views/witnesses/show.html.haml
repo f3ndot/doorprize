@@ -5,11 +5,27 @@
 %p
   %strong= model_class.human_attribute_name(:name) + ':'
   %br
-  = @witness.name
+  - if @witness.name.present?
+    - if @witness.incident.user = current_user
+      = @witness.name
+    - else
+      %i.icon-lock
+      (Withheld)
+      %a{ href: '#', rel: 'tooltip' , title: 'witness details publicly withheld for their privacy' } why?
+  - else
+    %span.muted (None)
 %p
   %strong= model_class.human_attribute_name(:contact) + ':'
   %br
-  = @witness.contact
+  - if @witness.contact.present?
+    - if @witness.incident.user = current_user
+      = @witness.contact
+    - else
+      %i.icon-lock
+      (Withheld)
+      %a{ href: '#', rel: 'tooltip' , title: 'witness details publicly withheld for their privacy' } why?
+  - else
+    %span.muted (None)
 %p
   %strong= model_class.human_attribute_name(:privacy_level) + ':'
   %br
