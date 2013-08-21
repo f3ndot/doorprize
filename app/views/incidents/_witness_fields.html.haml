@@ -1,7 +1,7 @@
 .nested-fields
   = f.input :name, hint: hidden_from_public_hint
   = f.input :contact, hint: hidden_from_public_hint
-  = f.input :privacy_level
+  / = f.input :privacy_level
   .links.control-group
     .controls
       = link_to_remove_association "remove existing witness", f, class: 'btn btn-small btn-danger'

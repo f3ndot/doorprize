@@ -70,3 +70,23 @@ jQuery ->
       preview_marker.setVisible true
 
     $('#incident_location').on 'keyup', $.debounce(500, window.geocodeAddressAndRenderPreview)
+
+  if document.getElementById("incident_map") != null
+    incident_map = new google.maps.Map document.getElementById("incident_map"),
+      center: default_latlng,
+      zoom: 13,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      streetViewControl: false,
+      mapTypeControl: false,
+      scrollwheel: false
+
+    incident_marker = new google.maps.Marker
+      map: incident_map,
+      position: default_latlng,
+      visible: false
+
+    saved_latlng = new google.maps.LatLng $('#incident_map').data('latitude'), $('#incident_map').data('longitude')
+    incident_map.setCenter saved_latlng
+    incident_map.setZoom 15
+    incident_marker.setPosition saved_latlng
+    incident_marker.setVisible true
