@@ -61,6 +61,7 @@ gem 'thin'
 # Photos
 gem 'carrierwave'
 gem 'fog'
+gem 'mini_magick'
 
 # Try out this new pagination gem
 gem 'kaminari'
