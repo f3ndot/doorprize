@@ -89,6 +89,26 @@
     %p.lead Incident Map
     #incident_map.mapfix{style: 'height:400px;', data: { latitude: @incident.latitude, longitude: @incident.longitude } }
 
+- if @incident.photos.count > 0
+  %hr
+
+  .row
+    .span12
+      %p.lead Photographic Evidence
+      %ul.thumbnails
+        - @incident.photos.each do |photo|
+          %li.span4
+            .thumbnail
+              = image_tag photo.image_url
+              .caption
+                - if photo.description.present?
+                  %p= photo.description
+                - else
+                  %p.muted No description given
+                %p
+                  = link_to 'View full image', photo.image_url, class: 'btn btn-primary'
+
+
 
 .row
   .span12

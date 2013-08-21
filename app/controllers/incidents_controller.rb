@@ -55,6 +55,7 @@ class IncidentsController < ApplicationController
   def new
     @incident = Incident.new
     @incident.build_car
+    @incident.photos.build
   end
 
 
@@ -79,6 +80,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/1/edit
   def edit
     @incident.build_car if @incident.car.nil?
+    @incident.photos.build if @incident.photos.count == 0
   end
 
   # POST /incidents
