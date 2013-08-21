@@ -237,11 +237,7 @@
 $(function(){
 
   $('#counter').countdown({
-    timestamp : (new Date("August 21, 2013 00:00:00 -04:00")).getTime(),
-    callback : function(d, h, m, s) {
-      if(d == 0 && h == 0 && m == 0 && s == 0) {
-        location.reload();
-      }
+    timestamp : (new Date("August 21, 2013 00:00:00 -04:00")).getTime()
     }
   });
 
