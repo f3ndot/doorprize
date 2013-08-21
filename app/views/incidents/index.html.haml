@@ -42,7 +42,7 @@
             Police Report
           %th
             %i.icon-facetime-video
-            Video
+            Evidence
           %th
             %i.icon-truck
             Vehicle
@@ -86,9 +86,10 @@
             %td
               - if incident.video.present?
                 = link_to incident.video, rel: 'tooltip', title: 'External link' do
-                  Yes
-                  %i.icon-external-link
-              - else
+                  %i.icon-facetime-video
+              - if incident.photos.count > 0
+                %i.icon-camera
+              - if incident.photos.count == 0 && incident.video.blank?
                 No
             - if incident.car_licence
               %td= link_to incident.car_licence, car_path(incident.car)
