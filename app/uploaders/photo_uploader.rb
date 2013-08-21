@@ -31,6 +31,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process :resize_to_limit => [800, 800]
   process :convert => 'jpg'
 
+  def filename
+    super.chomp(File.extname(super)) + '.jpg'
+  end
+
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
