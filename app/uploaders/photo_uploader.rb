@@ -32,7 +32,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process :convert => 'jpg'
 
   def filename
-    super.chomp(File.extname(super)) + '.jpg'
+    super.chomp(File.extname(super)) + '.jpg' unless super.nil?
   end
 
   # Process files as they are uploaded:

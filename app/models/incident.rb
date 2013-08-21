@@ -134,6 +134,7 @@ class Incident < ActiveRecord::Base
       score += 1 if witness_score
     end
     score += 3 if video.present?
+    score += 2 if photos.count > 0
     score += 1 if police_report_number.present?
 
     write_attribute :score, score
