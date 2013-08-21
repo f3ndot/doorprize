@@ -62,7 +62,10 @@
     %p
       %strong= model_class.human_attribute_name(:video) + ':'
       %br
-      = @incident.video
+      - if @incident.video.present?
+        = link_to @incident.video, rel: 'tooltip', title: 'External link' do
+          = @incident.video
+          %i.icon-external-link
 
     - if @incident.car.present?
       %p
