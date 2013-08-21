@@ -1,1 +1,1 @@
-json.extract! @witness, :name, :contact, :privacy_level, :created_at, :updated_at
+json.extract! @witness, :privacy_level, :created_at, :updated_at
