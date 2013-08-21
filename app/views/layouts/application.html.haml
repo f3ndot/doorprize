@@ -32,6 +32,9 @@
           = menu_item cars_path do
             %i.icon-truck
             Recorded Vehicles
+          = menu_item why_path do
+            %i.icon-question-sign
+            Why
         = menu_group pull: :right do
           - if user_signed_in?
             = menu_item "View your submissions", byuser_sorted_incidents_path('latest', current_user.id), class: 'hidden-desktop'

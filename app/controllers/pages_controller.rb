@@ -19,4 +19,8 @@ class PagesController < ApplicationController
     authorize! :prelaunch, :pages
     render text: File.read(Rails.root + "config/pre-launch-page.html"), layout: false, content_type: "text/html"
   end
+
+  def why
+    authorize! :why, :pages
+  end
 end
