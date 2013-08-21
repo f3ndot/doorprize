@@ -58,6 +58,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use thin because I'm lazy
 gem 'thin'
 
+# Photos
+gem 'carrierwave'
+
 # Try out this new pagination gem
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
