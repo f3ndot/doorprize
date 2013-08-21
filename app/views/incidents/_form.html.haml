@@ -69,12 +69,23 @@
             %i.icon-eye-open
             Add a witness
     .span6
-      %p
-        %strong Address Preview
-        %span#preview_map_updating.label.label-info{style: 'display:none'}
-          %i.icon-refresh.icon-spin
-          Updating...
-      #preview_map.mapfix{style: 'height:400px;'}
+      .form-inputs
+        %p
+          %strong Address Preview
+          %span#preview_map_updating.label.label-info{style: 'display:none'}
+            %i.icon-refresh.icon-spin
+            Updating...
+        #preview_map.mapfix{style: 'height:400px;'}
+        %hr
+        %h4 Photographic Evidence
+        = f.simple_fields_for :photos do |photos|
+          = render 'photo_fields', f: photos
+        .links.control-group
+          .controls
+            = link_to_add_association f, :photos, class: 'btn btn-small' do
+              %i.icon-camera
+              Add a photo
+
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'

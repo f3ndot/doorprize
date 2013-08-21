@@ -2,9 +2,11 @@ class Incident < ActiveRecord::Base
 
   has_one :car, autosave: true, dependent: :destroy
   has_many :witnesses, autosave: true, dependent: :destroy
+  has_many :photos, dependent: :destroy
   belongs_to :user
   accepts_nested_attributes_for :car, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :witnesses, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
 
   MIN_SEVERITY = 0
   MAX_SEVERITY = 10
@@ -132,6 +134,7 @@ class Incident < ActiveRecord::Base
       score += 1 if witness_score
     end
     score += 3 if video.present?
+    score += 2 if photos.count > 0
     score += 1 if police_report_number.present?
 
     write_attribute :score, score

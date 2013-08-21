@@ -36,6 +36,9 @@ GEM
       rails (>= 3.1)
     builder (3.1.4)
     cancan (1.6.10)
+    carrierwave (0.8.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     cocoon (1.2.0)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -53,10 +56,22 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    excon (0.13.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    fog (1.3.1)
+      builder
+      excon (~> 0.13.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.0.4)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
+    formatador (0.2.4)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -91,12 +106,18 @@ GEM
       treetop (~> 1.4.8)
     metaclass (0.0.1)
     mime-types (1.23)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
     minitest (4.7.5)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.7.8)
     multipart-post (1.2.0)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-ssh (2.6.2)
     newrelic_rpm (3.6.6.147)
+    nokogiri (1.5.6)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -152,6 +173,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    ruby-hmac (0.4.0)
     sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -173,6 +195,7 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.7)
+    subexec (0.2.2)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -207,14 +230,17 @@ DEPENDENCIES
   bootstrap-kaminari-views
   browser-timezone-rails
   cancan
+  carrierwave
   cocoon (= 1.2.0)
   coffee-rails (~> 4.0.0)
   devise
+  fog
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
   less-rails
+  mini_magick
   mocha
   newrelic_rpm
   omniauth
