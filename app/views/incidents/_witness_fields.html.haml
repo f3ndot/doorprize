@@ -1,6 +1,6 @@
 .nested-fields
-  = f.input :name
-  = f.input :contact
+  = f.input :name, hint: hidden_from_public_hint
+  = f.input :contact, hint: hidden_from_public_hint
   = f.input :privacy_level
   .links.control-group
     .controls

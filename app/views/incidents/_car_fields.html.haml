@@ -4,5 +4,5 @@
   = f.input :color
   = f.input :license_plate, placeholder: 'BHAM 244', hint: 'Try to include the space as shown on actual plates'
   = f.input :damage, hint: 'Describe damage the car sustained'
-  = f.input :driver_name
-  = f.input :driver_contact
+  = f.input :driver_name, hint: hidden_from_public_hint
+  = f.input :driver_contact, hint: hidden_from_public_hint

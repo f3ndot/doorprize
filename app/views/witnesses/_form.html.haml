@@ -1,7 +1,7 @@
 = simple_form_for @witness, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :name
-  = f.input :contact
-  = f.input :privacy_level
+  = f.input :name, hint: hidden_from_public_hint
+  = f.input :contact, hint: hidden_from_public_hint
+  / = f.input :privacy_level
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), witnesses_path, :class => 'btn'
