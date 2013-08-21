@@ -9,6 +9,7 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = javascript_include_tag "html5slider.js"
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
     = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
@@ -121,5 +122,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyBKfjjd_H0qkk4iQiTcwrYQiN5ET84GRAk&sensor=true"
-    = javascript_include_tag "http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"
     = javascript_include_tag "application"
