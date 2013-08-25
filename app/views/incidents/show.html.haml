@@ -40,7 +40,7 @@
     %p
       %strong= model_class.human_attribute_name(:description) + ':'
       %br
-      = @incident.description
+      = simple_format @incident.description
     %p
       %strong= model_class.human_attribute_name(:datetime_of_incident) + ':'
       %br

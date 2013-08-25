@@ -19,7 +19,7 @@
   %br
   - if @witness.contact.present?
     - if @witness.incident.user == current_user
-      = @witness.contact
+      = simple_format @witness.contact
     - else
       %i.icon-lock
       (Withheld)

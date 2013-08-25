@@ -5,7 +5,7 @@
 %p
   %strong= model_class.human_attribute_name(:description) + ':'
   %br
-  = @car.description
+  = simple_format @car.description
 %p
   %strong= model_class.human_attribute_name(:make) + ':'
   %br
@@ -43,7 +43,7 @@
   %br
   - if @car.driver_contact.present?
     - if @car.incident.user == current_user
-      = @car.driver_contact
+      = simple_format @car.driver_contact
     - else
       %i.icon-lock
       (Withheld)
