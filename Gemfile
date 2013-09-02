@@ -55,8 +55,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use thin because I'm lazy
-gem 'thin'
+# Use thin because I'm lazy, but only for development, unicorn for production & staging
+gem 'thin', group: [:development, :test]
+gem 'unicorn', group: [:production, :staging]
 
 # Photos
 gem 'carrierwave'
@@ -78,9 +79,6 @@ gem 'cancan'
 
 # Allow mocking and stubbing in tests
 gem 'mocha', require: false
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
