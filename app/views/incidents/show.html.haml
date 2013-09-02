@@ -1,6 +1,10 @@
 - content_for :title do
   = site_title @incident.title
 
+- if @incident.description.present?
+  - content_for :description do
+    = @incident.description
+
 - model_class = Incident
 .row
   .span12
