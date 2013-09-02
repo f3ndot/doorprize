@@ -5,6 +5,10 @@
   - content_for :description do
     = @incident.description
 
+- if @incident.photos.count > 0
+  - content_for :image do
+    = @incident.photos.first.image_url
+
 - model_class = Incident
 .row
   .span12
