@@ -18,14 +18,15 @@ jQuery ->
 
     plotMapCallback = (incidents_json) ->
       for incident in incidents_json
-        vLatLng = new google.maps.LatLng incident.latitude, incident.longitude
-        markers[incident.id] = new google.maps.Marker
-          map: global_map,
-          position: vLatLng,
-          title: incident.to_s
-        incidentBounds.extend vLatLng
-        google.maps.event.addListener markers[incident.id], 'click', ->
-          window.location.href = incident.url
+        do (incident) ->
+          vLatLng = new google.maps.LatLng incident.latitude, incident.longitude
+          markers[incident.id] = new google.maps.Marker
+            map: global_map,
+            position: vLatLng,
+            title: incident.to_s
+          incidentBounds.extend vLatLng
+          google.maps.event.addListener markers[incident.id], 'click', ->
+            window.location.href = incident.url
 
       global_map.setCenter incidentBounds.getCenter()
       global_map.fitBounds incidentBounds
