@@ -7,4 +7,9 @@ module ApplicationHelper
   def hidden_from_public_hint
     '<span class="text-info"><i class="icon-eye-close"></i> This field will be hidden from public</span>'.html_safe
   end
+
+  def site_title(title = nil)
+    default = 'Doored! - Canadian "Dooring" Stats Database'
+    title.present? ? "#{title} - #{default}" : default
+  end
 end

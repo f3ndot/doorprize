@@ -30,6 +30,13 @@ class Incident < ActiveRecord::Base
 
   before_save :calculate_score
 
+  def title
+    time = datetime_of_incident.strftime "%B %-d, %Y"
+    str = "Incident ##{id} (Level #{severity}) occured #{time}"
+    str << " filed by #{user.name}" if user.present?
+    return str
+  end
+
   def to_s
     "Incident No. \##{id} - Date: #{datetime_of_incident} - Severity Level #{severity}"
   end
