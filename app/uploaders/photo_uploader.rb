@@ -2,6 +2,9 @@
 
 class PhotoUploader < CarrierWave::Uploader::Base
 
+  THUMB_WIDTH = 160
+  THUMB_HEIGHT = 160
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick

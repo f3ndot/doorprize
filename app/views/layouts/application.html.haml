@@ -17,7 +17,10 @@
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
 
-    %meta{ property: "og:image", content: content_for?(:image) ? yield(:image) : "http://www.doored.ca/images/prod.png" }
+    - if content_for?(:image)
+      = yield(:image)
+    - else
+      %meta{ property: "og:image", content: "http://www.doored.ca/images/prod.png" }
     %meta{ property: "og:site_name", content: "Doored.ca - Canadian \"Dooring\" Stats Database" }
     - if content_for?(:description)
       %meta{ property: "og:description", content: yield(:description) }
