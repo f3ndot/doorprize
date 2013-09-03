@@ -1,6 +1,6 @@
 jQuery ->
   $("a[rel=popover]").popover()
-  $("a[rel=scorepopover]").popover
+  $("a[rel=scorepopover],a[rel=imagepopover]").popover
     html: true
     trigger: 'hover focus'
     container: 'body'

@@ -90,7 +90,8 @@
                 = link_to incident.video, rel: 'tooltip', title: 'External link' do
                   %i.icon-facetime-video
               - if incident.photos.count > 0
-                %i.icon-camera
+                %a{href: url_for(incident), rel: 'imagepopover', data: {title: 'Photographic Evidence', content: incident_image_popover_html(incident)}}
+                  %i.icon-camera
               - if incident.photos.count == 0 && incident.video.blank?
                 No
             - if incident.car_licence
