@@ -9,7 +9,7 @@ class LocationInput < SimpleForm::Inputs::Base
     # add location button
     gps_icon = template.content_tag(:i, nil, { class: "icon-location-arrow" })
     gps_text = template.content_tag(:span, nil, { class: "gps-text" })
-    gps_button = template.content_tag(:button, gps_icon + gps_text, { class: "btn get-location", type: "button", rel: 'tooltip', title: 'Get your current location' })
+    gps_button = template.content_tag(:button, gps_icon + gps_text, { class: "btn get-location", type: "button", rel: 'tooltip', title: 'Detect your current location' })
 
     template.content_tag(:div, location_input + gps_button, class: "input-append")
   end
