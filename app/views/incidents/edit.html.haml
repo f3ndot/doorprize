@@ -1,3 +1,6 @@
+- content_for :title do
+  = site_title "Updating Incident #{@incident.short_name}"
+
 - model_class = Incident
 .page-header
   %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
