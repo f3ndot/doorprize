@@ -77,7 +77,9 @@
                 = "Level #{incident.severity}"
                 - if incident.severity == 10
                   %i.icon-exclamation-sign
-            %td= incident.location
+            %td
+              .incident_list_location_map.mapfix{ style: 'width: 200px; height: 150px', data: { latitude: incident.latitude, longitude: incident.longitude, url: url_for(incident) } }
+              / = incident.location
             %td
               - if incident.police_report_number.present?
                 = link_to 'Yes', '#', class: 'date-link', title: incident.police_report_number, rel: 'tooltip'

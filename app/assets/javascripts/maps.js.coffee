@@ -6,6 +6,26 @@ jQuery ->
 
   default_latlng = new google.maps.LatLng 43.66365, -79.377594
 
+  $('.incident_list_location_map').each ->
+    $incident_map_div = $(this)
+    incident_coords = new google.maps.LatLng $incident_map_div.data('latitude'), $incident_map_div.data('longitude')
+    incident_map = new google.maps.Map this,
+      center: incident_coords,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel: false,
+      streetViewControl: false,
+      rotateControl: false,
+      scaleControl: false,
+      overviewMapControl: false,
+      mapTypeControl: false,
+    incident_marker = new google.maps.Marker
+      map: incident_map,
+      position: incident_coords,
+      visible: true
+    google.maps.event.addListener incident_marker, 'click', ->
+      window.location.href = $incident_map_div.data('url')
+
   if document.getElementById("global_map") != null
     global_map = new google.maps.Map document.getElementById("global_map"),
       center: default_latlng,
