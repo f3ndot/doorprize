@@ -57,7 +57,7 @@
   .row
     .span6
       .form-inputs
-        = f.input :description
+        = f.input :description, input_html: { class: 'autosize span4' }
         = f.input :datetime_of_incident, as: :datetime_picker
         = f.input :location, as: :location, hint: "Enter a street address or longitude and latitude"
         = f.input :latitude, :as => :hidden

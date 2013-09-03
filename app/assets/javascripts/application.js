@@ -17,4 +17,5 @@
 //= require browser_timezone_rails/application.js
 //= require jquery.ba-throttle-debounce.min.js
 //= require bootstrap-datetimepicker.min.js
+//= require jquery.autosize.js
 //= require_tree .
