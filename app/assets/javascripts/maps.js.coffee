@@ -45,7 +45,16 @@ jQuery ->
     preview_marker = new google.maps.Marker
       map: preview_map,
       position: default_latlng,
-      visible: false
+      visible: false,
+      animation: google.maps.Animation.DROP
+
+
+    google.maps.event.addListener preview_map, 'click', (event) ->
+      preview_marker.setPosition event.latLng
+      preview_marker.setVisible true
+      $('#incident_latitude').val event.latLng.lat()
+      $('#incident_longitude').val event.latLng.lng()
+      $('#incident_location').val event.latLng.toString()
 
     window.geocodeAddressAndRenderPreview = ->
       addr = $('#incident_location').val()

@@ -50,7 +50,7 @@
       .form-inputs
         = f.input :description
         = f.input :datetime_of_incident, as: :datetime_picker
-        = f.input :location, as: :location
+        = f.input :location, as: :location, hint: "Enter a street address or longitude and latitude"
         = f.input :latitude, :as => :hidden
         = f.input :longitude, :as => :hidden
         = f.input :severity, as: :range, hint: 'How badly you were hurt', input_html: { min: Incident::MIN_SEVERITY, max: Incident::MAX_SEVERITY }
@@ -75,6 +75,7 @@
           %span#preview_map_updating.label.label-info{style: 'display:none'}
             %i.icon-refresh.icon-spin
             Updating...
+        %p.text-info Clicking the map will set the location of the incident. This is useful if you don't know the street address.
         #preview_map.mapfix{style: 'height:400px;'}
         %hr
         %h4 Photographic Evidence
