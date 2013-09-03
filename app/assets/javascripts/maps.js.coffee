@@ -54,7 +54,6 @@ jQuery ->
       geocoder.geocode {'address': addr}, (results, status) ->
         if status == google.maps.GeocoderStatus.OK
           preview_map.setCenter results[0].geometry.location
-          preview_map.setZoom 13
           preview_marker.setPosition results[0].geometry.location
           preview_marker.setVisible true
           $('#incident_latitude').val results[0].geometry.location.lat()
