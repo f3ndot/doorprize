@@ -2,8 +2,11 @@
 
 class PhotoUploader < CarrierWave::Uploader::Base
 
-  THUMB_WIDTH = 160
-  THUMB_HEIGHT = 160
+  THUMB_WIDTH = 200
+  THUMB_HEIGHT = 200
+
+  IMAGE_WIDTH = 800
+  IMAGE_HEIGHT = 800
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -31,7 +34,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  process :resize_to_limit => [800, 800]
+  process :resize_to_limit => [PhotoUploader::IMAGE_WIDTH, PhotoUploader::IMAGE_HEIGHT]
   process :convert => 'jpg'
 
   def filename
@@ -47,7 +50,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fill => [160, 160]
+    process :resize_to_fill => [PhotoUploader::THUMB_WIDTH, PhotoUploader::THUMB_HEIGHT]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
