@@ -21,8 +21,10 @@
     %meta{ property: "og:site_name", content: "Doored.ca - Canadian \"Dooring\" Stats Database" }
     - if content_for?(:description)
       %meta{ property: "og:description", content: yield(:description) }
+      %meta{ name: "description", content: yield(:description) }
     - else
       %meta{ property: "og:description", content: "A simple site where Canadian cyclists who were \"doored\" can report their incident for the purpose of gathering stats." }
+      %meta{ name: "description", content: "A simple site where Canadian cyclists who were \"doored\" can report their incident for the purpose of gathering stats." }
     %meta{ property: "og:url", content: url_for(:only_path => false) }
     - if content_for?(:title)
       %meta{ property: "og:title", content: yield(:title) }
