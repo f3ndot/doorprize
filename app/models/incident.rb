@@ -18,6 +18,7 @@ class Incident < ActiveRecord::Base
   validates :description, presence: true
   validates :location, presence: true
   validate :validate_datetime_of_incident
+  validate :validate_video_url
 
   # TODO test the ever-living crap out of :by_user scope
   scope :by_user, -> (user_id) { where 'user_id = ?', user_id }
@@ -112,6 +113,15 @@ class Incident < ActiveRecord::Base
   end
 
   protected
+
+  def validate_video_url
+    begin
+      valid = URI.parse(video).kind_of?(URI::HTTP)
+    rescue URI::InvalidURIError, URI::InvalidComponentError
+      valid = false
+    end
+    errors.add(:video, "has to be a valid URL, leave blank if you don't have a video") unless valid
+  end
 
   def validate_datetime_of_incident
     errors.add(:datetime_of_incident, "can't be in the future") if datetime_of_incident.present? && datetime_of_incident.future?

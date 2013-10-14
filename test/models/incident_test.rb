@@ -53,4 +53,29 @@ class IncidentTest < ActiveSupport::TestCase
     incident.location = ''
     refute incident.valid?
   end
+
+  test "video field is url" do
+    incident = incidents(:one)
+    assert incident.valid?
+
+    [
+      "http://www.youtube.com/foo?bar",
+      "https://www.youtube.com/foo?bar",
+    ].each do |url|
+      incident.video = url
+      assert incident.valid?, "#{url} is considered invalid"
+    end
+
+    [
+      "No",
+      "none",
+      "sksajsk",
+      "http://foo&*&~.bar.com",
+      "irc://foo.bar.com:6667",
+      "mailto:me@example.com",
+    ].each do |url|
+      incident.video = url
+      refute incident.valid?, "#{url} is considered valid"
+    end
+  end
 end
