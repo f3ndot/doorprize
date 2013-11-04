@@ -115,10 +115,14 @@ class Incident < ActiveRecord::Base
   protected
 
   def validate_video_url
-    begin
-      valid = URI.parse(video).kind_of?(URI::HTTP)
-    rescue URI::InvalidURIError, URI::InvalidComponentError
-      valid = false
+    if video.present?
+      begin
+        valid = URI.parse(video).kind_of?(URI::HTTP)
+      rescue URI::InvalidURIError, URI::InvalidComponentError
+        valid = false
+      end
+    else
+      valid = true # allow blank submissions
     end
     errors.add(:video, "has to be a valid URL, leave blank if you don't have a video") unless valid
   end

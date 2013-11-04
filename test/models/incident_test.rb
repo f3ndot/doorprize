@@ -61,6 +61,7 @@ class IncidentTest < ActiveSupport::TestCase
     [
       "http://www.youtube.com/foo?bar",
       "https://www.youtube.com/foo?bar",
+      "",
     ].each do |url|
       incident.video = url
       assert incident.valid?, "#{url} is considered invalid"
