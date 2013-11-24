@@ -63,11 +63,11 @@ class IncidentsController < ApplicationController
   end
 
   def update_override_score
-    incident_params = params.require(:incident).permit(:score_override)
-    incident_params[:score_override] = nil if incident_params[:score_override].blank?
+    p = incident_params
+    p[:score_override] = nil if p[:score_override].blank?
 
     respond_to do |format|
-      if @incident.update_attributes! score_override: incident_params[:score_override]
+      if @incident.update_attributes! score_override: p[:score_override]
         format.html { redirect_to @incident, notice: 'Incident was successfully updated.' }
         format.json { head :no_content }
       else
@@ -133,6 +133,6 @@ class IncidentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incident_params
-      params.require(:incident).permit(:description, :datetime_of_incident, :location, :latitude, :longitude, :police_report_number, :video, :severity, car_attributes: [:id, :description, :make, :color, :license_plate, :damage, :driver_name, :driver_contact], witnesses_attributes: [:id, :name, :privacy_level, :contact, :_destroy], photos_attributes: [:id, :description, :image])
+      params.require(:incident).permit(:score_override, :description, :datetime_of_incident, :location, :latitude, :longitude, :police_report_number, :video, :severity, car_attributes: [:id, :description, :make, :color, :license_plate, :damage, :driver_name, :driver_contact], witnesses_attributes: [:id, :name, :privacy_level, :contact, :_destroy], photos_attributes: [:id, :description, :image])
     end
 end
