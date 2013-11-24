@@ -80,6 +80,9 @@ gem 'cancan'
 # Allow mocking and stubbing in tests
 gem 'mocha', require: false
 
+# For feedback system
+gem 'mail'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 

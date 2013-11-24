@@ -23,4 +23,21 @@ class PagesController < ApplicationController
   def why
     authorize! :why, :pages
   end
+
+  def feedback
+    authorize! :feedback, :pages
+
+    begin
+      FeedbackMailer.feedback(params[:message], params[:email]).deliver!
+    rescue Exception => e
+      respond_to do |format|
+        format.json { render status: :internal_server_error, text: e.to_s }
+      end
+      return
+    end
+
+    respond_to do |format|
+      format.json { render json: "Thanks for the feedback!".to_json }
+    end
+  end
 end

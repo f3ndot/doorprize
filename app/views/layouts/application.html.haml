@@ -49,6 +49,10 @@
           = menu_item why_path do
             %i.icon-question-sign
             Why
+          %li
+            = link_to '#bug-report', role: 'button', data: { toggle: 'modal' } do
+              %i.icon-bug
+              Bug?
         = menu_group pull: :right do
           - if user_signed_in?
             = menu_item "View your submissions", byuser_sorted_incidents_path('latest', current_user.id), class: 'hidden-desktop'
@@ -134,6 +138,36 @@
           under the
           = link_to 'MIT license', 'https://en.wikipedia.org/wiki/MIT_License'
         .footer-links
+
+    #bug-report.modal.hide.fade{ tabindex: "-1", role: "dialog", aria: { labelledby: 'bug-report-label', hidden: 'true' } }
+      .modal-header
+        %button.close{ type: 'button', data: { dismiss: 'modal' }, aria: { hidden: 'true' } } ×
+        %h3#bug-report-label Found a problem with the site?
+      .modal-body
+        %p Go ahead and describe your issue or suggestion. Please be as clear as possible
+        %input#bugReportEmail{ type: 'email', placeholder: 'Your Email' }
+        %textarea#bugReportTextfield.autosize{ style: 'width: 97%; height:75px', placeholder: 'Your suggestion, bug report, or complaint.' }
+        #bugReportErrorField.alert.alert-danger.alert-block.hidden
+          %h4 Crap! Something broke badly
+          %p
+            Sorry but there was an error trying to send the report!
+          %p
+            Please
+            =link_to 'manually email Justin', 'mailto:me@justinbull.ca'
+            or
+            =link_to 'tweet @dooredCA', '//www.twitter.com/dooredCA'
+          %p.errorCode.hidden
+            Mention this error code:
+            %strong
+
+
+
+      .modal-footer
+        %button.btn{ data: { dismiss: 'modal' }, aria: { hidden: 'true' } } Close
+        %button#bugReportBtn.btn.btn-primary.disabled
+          %i.icon-bug
+          Report bug
+
     /
       Javascripts
       \==================================================

@@ -1,0 +1,11 @@
+!!!
+%html{lang:"en"}
+  %head
+    %meta{content:"text/html; charset=UTF-8", http: {equiv: "Content-Type"}}
+  %body
+    %h1 New Feedback!
+    %p
+      %strong From:
+      %a{ href: "mailto:#{@email}" }= @email
+
+    %p= simple_format h(@message)

@@ -26,6 +26,8 @@ Doorprize::Application.routes.draw do
   get 'terms' => 'pages#terms', as: :terms
   get 'prelaunch' => 'pages#prelaunch', as: :prelaunch
   get 'why' => 'pages#why', as: :why
+  post 'feedback' => 'pages#feedback', as: :feedback
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

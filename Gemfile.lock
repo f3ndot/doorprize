@@ -246,6 +246,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   less-rails
+  mail
   mini_magick
   mocha
   newrelic_rpm
