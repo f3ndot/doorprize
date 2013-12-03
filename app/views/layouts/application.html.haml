@@ -119,6 +119,22 @@
         .row
           .span12.bootstrap-flashes
             = bootstrap_flash
+
+        .row
+          .span12.yellow-stripe{ style: 'padding-right:0;padding-left:0;margin-top:20px'}
+          .span12
+            .alert.alert-info{ style: 'margin-bottom:0;-webkit-border-radius:0;-webkit-border-radius:0;border-radius:0;border-radius:0;' }
+              %button.close{ type: "button", data: { dismiss: "alert" }} &times;
+              %p.lead
+                %i.icon-thumbs-up
+                Hey there! Do you want to help us prevent doorings and improve the cycling community?
+              %p
+                %strong People are working with the City of Toronto to incorporate a safety product for taxicabs designed to reduce doorings. They need your input. 
+              %button.btn.btn-success.btn-large
+                %i.icon-heart
+                Sure! I'll give you 2 minutes of my time
+          .span12.yellow-stripe{ style: 'padding-right:0;padding-left:0'}
+
         = yield
 
     %footer.footer
