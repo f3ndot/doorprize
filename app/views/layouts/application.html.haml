@@ -127,12 +127,13 @@
               %button.close{ type: "button", data: { dismiss: "alert" }} &times;
               %p.lead
                 %i.icon-thumbs-up
-                Hey there! Do you want to help us prevent doorings and improve the cycling community?
+                %em Hey there Torontonian!
+                Do you want to help us prevent doorings and improve the cycling community in the city?
               %p
-                %strong People are working with the City of Toronto to incorporate a safety product for taxicabs designed to reduce doorings. They need your input. 
-              %button.btn.btn-success.btn-large
+                %strong Several individuals are approaching the City of Toronto regarding the enforcement of a safety product on taxis to help prevent dooring. They need your input!
+              = link_to '#survey', class: 'btn btn-success btn-large', role: 'button', data: { toggle: 'modal' } do
                 %i.icon-heart
-                Sure! I'll give you 2 minutes of my time
+                Sure! I'll give you 60 seconds of my time
           .span12.yellow-stripe{ style: 'padding-right:0;padding-left:0'}
 
         = yield
@@ -154,6 +155,15 @@
           under the
           = link_to 'MIT license', 'https://en.wikipedia.org/wiki/MIT_License'
         .footer-links
+
+    #survey.modal.hide.fade{ tabindex: "-1", role: "dialog", aria: { labelledby: 'survey-label', hidden: 'true' } }
+      .modal-header
+        %button.close{ type: 'button', data: { dismiss: 'modal' }, aria: { hidden: 'true' } } ×
+        %h3#survey-label The 60 Second Survey!
+      .modal-body{ style: 'padding:0;max-height:800px' }
+        <div id="surveyMonkeyInfo"><div><script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=cgDij7tEJ36Oll7IW0vD3Q_3d_3d"> </script></div></div>
+      .modal-footer
+        %button.btn{ data: { dismiss: 'modal' }, aria: { hidden: 'true' } } Submitted the survey, thanks!
 
     #bug-report.modal.hide.fade{ tabindex: "-1", role: "dialog", aria: { labelledby: 'bug-report-label', hidden: 'true' } }
       .modal-header
