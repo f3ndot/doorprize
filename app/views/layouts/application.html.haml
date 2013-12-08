@@ -127,13 +127,14 @@
               %button.close{ type: "button", data: { dismiss: "alert" }} &times;
               %p.lead
                 %i.icon-thumbs-up
-                %em Hey there Torontonian!
-                Do you want to help us prevent doorings and improve the cycling community in the city?
+                %em Hey there!
+                Do you want to help us prevent doorings and improve the cycling community in the Toronto?
               %p
                 %strong Several individuals are approaching the City of Toronto regarding the enforcement of a safety product on taxis to help prevent dooring. They need your input!
-              = link_to '#survey', class: 'btn btn-success btn-large', role: 'button', data: { toggle: 'modal' } do
+              = link_to '#survey', style: 'vertical-align:bottom', class: 'btn btn-success btn-large', role: 'button', data: { toggle: 'modal' } do
                 %i.icon-heart
                 Sure! I'll give you 60 seconds of my time
+              %small Even if you're not in Toronto, we'd love your feedback!
           .span12.yellow-stripe{ style: 'padding-right:0;padding-left:0'}
 
         = yield
@@ -160,10 +161,33 @@
       .modal-header
         %button.close{ type: 'button', data: { dismiss: 'modal' }, aria: { hidden: 'true' } } ×
         %h3#survey-label The 60 Second Survey!
-      .modal-body{ style: 'padding:0;max-height:800px' }
-        <div id="surveyMonkeyInfo"><div><script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=cgDij7tEJ36Oll7IW0vD3Q_3d_3d"> </script></div></div>
+      .modal-body{ }
+        #wufoo-z1wmh0hi1mhr1q1
+          Fill out the
+          = link_to 'survey', 'https://justinbull.wufoo.com/forms/z1wmh0hi1mhr1q1'
+        %script{ type: 'text/javascript' }
+          var z1wmh0hi1mhr1q1;(function(d, t) {
+          var s = d.createElement(t), options = {
+          'userName':'justinbull', 
+          'formHash':'z1wmh0hi1mhr1q1', 
+          'autoResize':true,
+          'height':'1417',
+          'async':true,
+          'host':'wufoo.com',
+          'header':'show', 
+          'ssl':true};
+          s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
+          s.onload = s.onreadystatechange = function() {
+          var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+          try { z1wmh0hi1mhr1q1 = new WufooForm();z1wmh0hi1mhr1q1.initialize(options);z1wmh0hi1mhr1q1.display(); } catch (e) {}};
+          var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+          })(document, 'script');
       .modal-footer
-        %button.btn{ data: { dismiss: 'modal' }, aria: { hidden: 'true' } } Submitted the survey, thanks!
+        %a.btn.btn-warning{ href: "https://justinbull.wufoo.com/forms/z1wmh0hi1mhr1q1/", target: "_blank" }
+          %i.icon-external-link
+          Open survey in new window
+        %button.btn{ data: { dismiss: 'modal' }, aria: { hidden: 'true' } }
+          Dismiss
 
     #bug-report.modal.hide.fade{ tabindex: "-1", role: "dialog", aria: { labelledby: 'bug-report-label', hidden: 'true' } }
       .modal-header

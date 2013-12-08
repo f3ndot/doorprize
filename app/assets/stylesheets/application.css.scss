@@ -11,6 +11,11 @@
 // = require bootstrap-datetimepicker.min.css
 // = require_tree .
 
+// Random fix for wufoo's iframe height calculation
+.wufoo-form-container {
+  height: 1417px !important;
+}
+
 .container-wrapper {
   background-color: #fff;
   padding-bottom: 70px;
