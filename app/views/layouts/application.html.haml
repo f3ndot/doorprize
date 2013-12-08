@@ -120,22 +120,29 @@
           .span12.bootstrap-flashes
             = bootstrap_flash
 
-        .row
-          .span12.yellow-stripe{ style: 'padding-right:0;padding-left:0;margin-top:20px'}
-          .span12
-            .alert.alert-info{ style: 'margin-bottom:0;-webkit-border-radius:0;-webkit-border-radius:0;border-radius:0;border-radius:0;' }
-              %button.close{ type: "button", data: { dismiss: "alert" }} &times;
-              %p.lead
-                %i.icon-thumbs-up
-                %em Hey there!
-                Do you want to help us prevent doorings and improve the cycling community in the Toronto?
-              %p
-                %strong Several individuals are approaching the City of Toronto regarding the enforcement of a safety product on taxis to help prevent dooring. They need your input!
-              = link_to '#survey', style: 'vertical-align:bottom', class: 'btn btn-success btn-large', role: 'button', data: { toggle: 'modal' } do
-                %i.icon-heart
-                Sure! I'll give you 60 seconds of my time
-              %small Even if you're not in Toronto, we'd love your feedback!
-          .span12.yellow-stripe{ style: 'padding-right:0;padding-left:0'}
+        - unless cookies[:survey] == 'dismiss' || (current_user.survey_dismissed? if user_signed_in?)
+          #surveyAlert.row
+            .span12.yellow-stripe{ style: 'padding-right:0;padding-left:0;margin-top:20px'}
+            .span12
+              .alert.alert-info{ style: 'margin-bottom:0;-webkit-border-radius:0;-webkit-border-radius:0;border-radius:0;border-radius:0;' }
+                %button.close{ type: "button", data: { dismiss: "alert" }} &times;
+                .thankYouMessage.text-center.hidden
+                  %p.lead
+                    %i.icon-thumbs-up
+                    Thanks for your time! Feel free to share the survey with others here:
+                  %input#shareForm.input-xxlarge.text-center{ type: 'text', readonly: true, value: 'https://justinbull.wufoo.com/forms/z1wmh0hi1mhr1q1/' }
+                .surveyMessage
+                  %p.lead
+                    %i.icon-thumbs-up
+                    %em Hey there!
+                    Do you want to help us prevent doorings and improve the cycling community in the Toronto?
+                  %p
+                    %strong Several individuals are approaching the City of Toronto regarding the enforcement of a safety product on taxis to help prevent dooring. They need your input!
+                  = link_to '#survey', style: 'vertical-align:bottom', class: 'btn btn-success btn-large', role: 'button', data: { toggle: 'modal' } do
+                    %i.icon-heart
+                    Sure! I'll give you 60 seconds of my time
+                  %small Even if you're not in Toronto, we'd love your feedback!
+            .span12.yellow-stripe{ style: 'padding-right:0;padding-left:0'}
 
         = yield
 

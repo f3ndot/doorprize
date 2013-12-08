@@ -21,6 +21,7 @@ Doorprize::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'incidents#index'
 
+  post 'dismiss-survey' => 'surveys#dismiss', as: :survey
   get 'robots.txt' => 'pages#robots'
   get 'privacy' => 'pages#privacy', as: :privacy
   get 'terms' => 'pages#terms', as: :terms

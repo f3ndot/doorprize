@@ -15,3 +15,15 @@ jQuery ->
   $('[data-behaviour=datetime_picker]').datetimepicker
     pick12HourFormat: true
     pickSeconds: false
+
+  $('#survey').on 'hidden', () ->
+    $('.surveyMessage').hide()
+    $('.thankYouMessage').removeClass 'hidden'
+    $.post '/dismiss-survey'
+
+  $('#surveyAlert .alert').on 'closed', () ->
+    $.post '/dismiss-survey'
+    $('#surveyAlert').remove()
+
+  $('#shareForm').on 'click', () ->
+    $(this).select()

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130821005138) do
+ActiveRecord::Schema.define(version: 20131208223413) do
 
   create_table "cars", force: true do |t|
     t.text     "description"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20130821005138) do
   add_index "photos", ["incident_id"], name: "index_photos_on_incident_id"
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20130821005138) do
     t.string   "uid"
     t.string   "name"
     t.integer  "role",                   default: 0
+    t.boolean  "survey_dismissed",       default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

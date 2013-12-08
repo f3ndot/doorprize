@@ -6,6 +6,7 @@ class Ability
 
     can :read, :all
     can [:robots, :privacy, :terms, :prelaunch, :why, :feedback], :pages
+    can [:dismiss], :surveys
     can :create, Incident
     can :create, Witness
     can :create, Car
